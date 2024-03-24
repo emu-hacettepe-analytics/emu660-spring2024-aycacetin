@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Welcome to My Analytics Lab",
     "section": "",
-    "text": "Hello!! My name is xxx xxxx.\nThis is my personal webpage.\nPlease stay tuned to follow my works on data analytics, blog posts, and more.\n\n\n\n Back to top"
+    "text": "Hello! My name is Ayça ÇETİN. \nThis is my personal webpage.\nPlease stay tuned to follow my works on data analytics, blog posts, and more. \n\n\n\n Back to top"
   },
   {
     "objectID": "project.html",
@@ -74,31 +74,28 @@
     "href": "assignments.html",
     "title": "My Assignments",
     "section": "",
-    "text": "On this page, I showcase the assignment I conducted for the [term and year, e.g. Spring 2024] EMU660 Decision Making with Analytics course.\nPlease use left menu to navigate through my assignments.\n\n\n\n Back to top",
-    "crumbs": [
-      "My Assignments"
-    ]
+    "text": "On this page, I showcase the assignment I conducted for the Spring 2024 EMU660 Decision Making with Analytics course.\nPlease use left menu to navigate through my assignments.\n\n\n\n Back to top"
   },
   {
     "objectID": "about.html#employements",
     "href": "about.html#employements",
     "title": "About Me",
     "section": "Employements",
-    "text": "Employements\n\nFirm xxx, position xx, year xxx\nFirm yyy, position yyy, year yyy"
+    "text": "Employements\n\nHacettepe University, Research Assistant, 2024"
   },
   {
     "objectID": "about.html#internships",
     "href": "about.html#internships",
     "title": "About Me",
     "section": "Internships",
-    "text": "Internships\n\nFirm aaa, position xx, year xxx\nFirm bbb, position yyy, year yyy"
+    "text": "Internships\n\nTURKSAT, Intern, 2021\nHAVELSAN, Intern, 2022"
   },
   {
     "objectID": "posts.html",
     "href": "posts.html",
     "title": "My Blog",
     "section": "",
-    "text": "This page is under construction.\n\n\n\n Back to top"
+    "text": "This page is under construction.\n\n\n\n\n\n\n\n\n Back to top"
   },
   {
     "objectID": "docs/assignments/assignment-1.html",
@@ -126,5 +123,12 @@
     "crumbs": [
       "Assignment 2"
     ]
+  },
+  {
+    "objectID": "about.html#graduation-projects",
+    "href": "about.html#graduation-projects",
+    "title": "About Me",
+    "section": "Graduation Projects",
+    "text": "Graduation Projects\n\n“İş Atamalarının Çizelgeleme Yöntemi ile Eniyilenmesi”, MAN Türkiye A.Ş., 2022-2023"
   }
 ]

@@ -2,8 +2,8 @@
 title: "Welcome to My Analytics Lab"
 ---
 
-Hello!! My name is xxx xxxx.
+Hello! My name is Ayça ÇETİN. ![](images/2f79cab3c0274c157d52d77f0f998e24.gif){width="70"}
 
 This is my personal webpage.
 
-Please stay tuned to follow my works on data analytics, blog posts, and more.
+Please stay tuned to follow my works on data analytics, blog posts, and more. ![](images/bam-animations-v05-wink.gif){width="100"}

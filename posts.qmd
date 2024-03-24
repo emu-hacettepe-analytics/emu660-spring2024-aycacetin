@@ -4,3 +4,5 @@ sidebar: false
 ---
 
 This page is under construction.
+
+![](images/lCykYS.gif){fig-align="center" width="200"}
