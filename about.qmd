@@ -7,6 +7,7 @@ sidebar: false
 
 # Education
 
+-   TED Ankara College Foundation Private High School
 -   B.S., Industrial Engineering, Başkent University, Turkey, 2019 - 2023.
 -   M.S., Industrial Engineering, Hacettepe University, Turkey, 2023 - ongoing.
 
