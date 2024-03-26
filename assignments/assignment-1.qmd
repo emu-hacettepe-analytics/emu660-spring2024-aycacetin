@@ -4,12 +4,128 @@ title: "Assignment 1"
 
 # Assignment 1
 
+My first assignment has three parts:
+
+### (a) a brief summary about **“Veri Bilimi ve Endüstri Mühendisliği Üzerine Sohbetler - Baykal Hafızoğlu & Erdi Daşdemir”**:
+
+Baykal Hafızoğlu is the guest of our lecturer Erdi Daşdemir’s talk about data science and industrial engineering. In the beginning of the talk Hafızoğlu defines himself as an OR Scientist and Optimization Scientist. He indicates that his job is to write and solve OR models (mathematical models).
+
+Hafızoğlu starts with OR and indicates that the classic definition of OR has changed a lot in the past few years. It was about optimization and statistics. However, it’s more about artificial intelligence and machine learning nowadays. That’s why Hafızoğlu prefers to call OR “analytics”.
+
+It is possible to divide analytics into four:
+
+1-Descriptive analytics: Deals with defining the problem.
+
+2-Diagnostic analytics: Deals with what the problem is and what the reasons are.
+
+3-Predictive analytics: Deals with the future.
+
+4-Prescriptive analytics: Deals with suggesting a solution.
+
+He highlights that what students learn in undergrad is very precious and they should be aware of it. In the end of undergrad, students gain a good knowledge about analytics.
+
+Later in his speech, he talks about the lessons he learned from his own experiences. Firstly, he says that “All projects start with a clear problem definition.”. It means that even about the simplest thing he needs to deal with, the problem definition must be clear and concise. A good, compatible KPI (Key Performance Indicator) needs to be chosen in order to present the problem, interpret and explain it to the user. After that, a success criteria needs to be defined in order to understand whether we have achieved success or not.
+
+Another lesson that he learned from his own experiences is the importance of deployment. He thinks delivering the model to the user is always better than keeping it in your computer. In this case, “How to deploy” and “where to deploy” are important questions.
+
+Hafızoğlu highlights the importance of the user interface and early prototype. User satisfaction is the most important thing that’s why the user needs to be understood well. Without keeping the user waiting, early prototype must be delivered for an early feedback. The user should not struggle to understand the user interface. If the user has to put effort, it shows that the user interface is not good enough.
+
+It's very crucial for users to understand and own the model they will use. Because they wouldn't want to use models they don't understand. Therefore, we should be able to explain the analytical model we have established.
+
+In the end, we need to show the solution’s effect mathematically and refer to the problem and KPIs. Conflicting KPIs need to be considered because there can be a trade-off between KPIs. When one thing gets better, another thing can get worse.
+
+### (b) exploring statistical summaries with custom functions and loops:
+
 ```{r}
-1 + 1
+data(mtcars)#mtcars dataset
+
+custom_summary<-function(cars){
+  mean_cars<-mean(cars)
+  median_cars<-median(cars)
+  standard_deviation_cars<-sd(cars)
+  minimum_cars<-min(cars)
+  maximum_cars<-max(cars)
+  
+  result<-c("mean"=mean_cars,
+            "median"=median_cars,
+            "standard deviation"=standard_deviation_cars,
+            "minimum"=minimum_cars,
+            "maximum"=maximum_cars)
+  
+  return(result)
+}
+
+cars<-c(1, 2, 3)#numeric vector
+
+#writing a custom summary function
+print("writing a custom summary function")
+print("mpg")
+custom_summary(mtcars$mpg[cars])
+print("cyl")
+custom_summary(mtcars$cyl[cars])
+print("disp")
+custom_summary(mtcars$disp[cars])
+print("hp")
+custom_summary(mtcars$hp[cars])
+print("drat")
+custom_summary(mtcars$drat[cars])
+print("wt")
+custom_summary(mtcars$wt[cars])
+print("qsec")
+custom_summary(mtcars$qsec[cars])
+print("vs")
+custom_summary(mtcars$vs[cars])
+print("am")
+custom_summary(mtcars$am[cars])
+print("gear")
+custom_summary(mtcars$gear[cars])
+print("carb")
+custom_summary(mtcars$carb[cars])
+
+#applying the function using a loop
+print("applying the function using a loop")
+for(column_name in colnames(mtcars)){
+  column_data<-mtcars[[column_name]][cars]
+  print(column_name)
+  print(custom_summary(column_data))
+}
+
+#an alternative approach with apply
+print("an alternative approach with apply")
+apply(mtcars[cars, ], 2, custom_summary)
+
 ```
 
-My first assignment has two parts.
+### (c) counting NA values and substituting with the number 660:
 
-## (a)
+```{r}
+install.packages("dslabs")
+library(dslabs)
+data(na_example)
 
-## (b)
+#total count of NA values
+sum(is.na(na_example))
+
+#substituting the NA values with the number 660 and saving it as a new dataframe
+no_nas<-ifelse(is.na(na_example), 660, na_example)
+
+#total count of NA values in the new dataframe
+sum(is.na(no_nas))
+
+count<-0
+#total count of the number 660 in the new dataframe
+for(i in 1:1000)
+  if(no_nas[i]==660)
+    count<-count+1
+count
+```
+
+Dataset with NA values
+
+![](images/before.png){fig-align="center"}
+
+Dataset with the number 660
+
+![](images/after1.png){fig-align="center"}
+
+![](images/after2.png){fig-align="center"}
