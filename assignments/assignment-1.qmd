@@ -98,28 +98,6 @@ apply(mtcars[cars, ], 2, custom_summary)
 
 ### (c) counting NA values and substituting with the number 660:
 
-```{r}
-install.packages("dslabs")
-library(dslabs)
-data(na_example)
-
-#total count of NA values
-sum(is.na(na_example))
-
-#substituting the NA values with the number 660 and saving it as a new dataframe
-no_nas<-ifelse(is.na(na_example), 660, na_example)
-
-#total count of NA values in the new dataframe
-sum(is.na(no_nas))
-
-count<-0
-#total count of the number 660 in the new dataframe
-for(i in 1:1000)
-  if(no_nas[i]==660)
-    count<-count+1
-count
-```
-
 Dataset with NA values
 
 ![](images/before.png){fig-align="center"}
