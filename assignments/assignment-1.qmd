@@ -121,10 +121,10 @@ count
 
 Dataset with NA values
 
-![](images/before.png){fig-align="center"}
+![](images/before.png){fig-align="left" width="500"}
 
 Dataset with the number 660
 
-![](images/after1.png){fig-align="center"}
+![](images/after1.png){fig-align="left" width="500"}
 
-![](images/after2.png){fig-align="center"}
+![](images/after2.png){fig-align="left" width="500"}
