@@ -1,40 +1,132 @@
 ---
-title: "Project X"
+title: "Project"
 ---
 
 Welcome to my project page.
 
 Keep an eye on this space to stay updated with my project activities.
 
-(The titles below are provided as examples; please feel free to adjust them as necessary.)
+![](images/f481ba829592aa98ba4dc6d5d91c330b.gif){fig-align="center" width="200"}
 
-# 1. Project Overview and Scope
+# 1. Project Overview and Scope 🔎
 
-xxxxxx
+Istanbul is not only Turkey's but also Europe's most populous city. Therefore, if a disaster such as an earthquake occurs, the potential of destruction and the need for help would be very high. Due to the earthquake disaster that occurred at the beginning of 2023, the risky condition of buildings and residences in Turkey has become a matter of concern for people.
 
-# 2. Data
+The purpose of this project is to examine Istanbul, which is almost certain to face a possible earthquake and significant destruction. The aim of the project is not only to assess buildings and residences in terms of their risky structural condition and make district-based interpretations but also to evaluate the opinions of people living in Istanbul and compare all the results.
 
-xxxxxx
+9 datasets were used for this purpose, various graphs were drawn and interpreted comprehensively to make inferences.
+
+# 2. Data 📄
 
 ## 2.1 Data Source
 
-xxxxxx
+-   [Deprem Senaryosu Analiz Sonuçları](https://data.ibb.gov.tr/dataset/deprem-senaryosu-analiz-sonuclari/resource/9c3ac492-de4b-4245-b418-7ad3df67a193)
+
+-   [2017 Yılı Mahalle Bazlı Bina Sayıları](https://data.ibb.gov.tr/dataset/mahalle-bazli-bina-analiz-verisi/resource/cef193d5-0bd2-4e8d-8a69-275c50288875)
+
+-   [VDYM İlçe Bazında Hanelerdeki Riskli Yapı Durumu Bireysel Öngörüleri](https://data.ibb.gov.tr/dataset/vdym-ilce-bazinda-hanelerdeki-riskli-yapi-durumu-bireysel-ongoruleri/resource/52fe7088-62f2-4480-8f27-788dee385c9b)
+
+-   [VDYM İlçe Bazında Hanelerdeki Kentsel Dönüşüm Fikri Bireysel Öngörüleri](https://data.ibb.gov.tr/dataset/vdym-ilce-bazinda-hanelerdeki-kentsel-donusum-fikri-bireysel-ongoruleri/resource/2683ee8b-9bc3-45cf-a115-49b285851317)
+
+-   [İl Düzeyinde Bina ve Konut Niteliklerine Göre Hanehalkı Sayısı vs Binanın İnşa Yılı](https://biruni.tuik.gov.tr/medas/)
+
+-   [İl Düzeyinde Bina ve Konut Niteliklerine Göre Hanehalkı Sayısı vs Binanın Kat Sayısı](https://biruni.tuik.gov.tr/medas/)
+
+-   [İlçe Bazlı Ortalama Hane Halkı Büyüklüğü](https://data.ibb.gov.tr/dataset/ilce-bazli-ortalama-hane-halki-buyuklugu/resource/da747beb-df41-474e-aa8a-93d983e69b15)
+
+-   [2019 Yılı Belediye Nüfusları](https://data.ibb.gov.tr/dataset/belediye-nufuslari-veri-seti/resource/c6c9b289-2824-41b3-ab3d-4fd655ed4e24)
+
+-   [İstanbul Çevresinde Gerçekleşen Depremler](https://data.ibb.gov.tr/dataset/istanbul-da-son-bir-yilda-gerceklesen-depremler/resource/32904f60-8091-4dc3-b527-351dca6c1c22)
+
+Information and explanations about these datasets are included in the section [2.2 General Information About Data].
+
+All this data was taken from [İstanbul Büyükşehir Belediyesi Açık Veri Portalı](https://data.ibb.gov.tr/dataset) and [TÜİK Merkezi Dağıtım Sistemi](https://biruni.tuik.gov.tr/medas/).
+
+```{r}
+#install.packages("readxl")
+library(readxl)
+
+deprem_senaryo<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=1)
+bina_sayi<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=2)
+riskli_yapi_durumu<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=3)
+kentsel_donusum_fikri<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=4)
+insa_yilina_gore_hanehalki_sayisi<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=5)
+kat_sayisina_gore_hanehalki_sayisi<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=6)
+ort_hane<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=7)
+belediye_nüfus<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=8)
+gerceklesen_deprem<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=9)
+
+save(deprem_senaryo, file="deprem_senaryo.RData")
+save(bina_sayi, file="bina_sayi.RData")
+save(riskli_yapi_durumu, file="riskli_yapi_durumu.RData")
+save(kentsel_donusum_fikri, file="kentsel_donusum_fikri.RData")
+save(insa_yilina_gore_hanehalki_sayisi, file="insa_yilina_gore_hanehalki_sayisi.RData")
+save(kat_sayisina_gore_hanehalki_sayisi, file="kat_sayisina_gore_hanehalki_sayisi.RData")
+save(ort_hane, file="ort_hane.RData")
+save(belediye_nüfus, file="belediye_nüfus.RData")
+save(gerceklesen_deprem, file="gerceklesen_deprem.RData")
+```
 
 ## 2.2 General Information About Data
 
-xxxxxx
+[Deprem Senaryosu Analiz Sonuçları](https://data.ibb.gov.tr/dataset/deprem-senaryosu-analiz-sonuclari/resource/9c3ac492-de4b-4245-b418-7ad3df67a193) is a dataset containing the results of an analysis made on an earthquake scenario that is predicted to have a magnitude of 7.5. Each row represents a neighbourhood. The columns have information mainly about the number of buildings based on damage level, the number of people based on vital status and pipe damages.
+
+[2017 Yılı Mahalle Bazlı Bina Sayıları](https://data.ibb.gov.tr/dataset/mahalle-bazli-bina-analiz-verisi/resource/cef193d5-0bd2-4e8d-8a69-275c50288875) is a dataset about the buildings. Each row represents a neighbourhood. The columns have information mainly about year of construction and number of floors of the buildings.
+
+[VDYM İlçe Bazında Hanelerdeki Riskli Yapı Durumu Bireysel Öngörüleri](https://data.ibb.gov.tr/dataset/vdym-ilce-bazinda-hanelerdeki-riskli-yapi-durumu-bireysel-ongoruleri/resource/52fe7088-62f2-4480-8f27-788dee385c9b) is a dataset about the opinions of households about the risky building situation on a district basis.
+
+[VDYM İlçe Bazında Hanelerdeki Kentsel Dönüşüm Fikri Bireysel Öngörüleri](https://data.ibb.gov.tr/dataset/vdym-ilce-bazinda-hanelerdeki-kentsel-donusum-fikri-bireysel-ongoruleri/resource/2683ee8b-9bc3-45cf-a115-49b285851317) is a dataset about the opinions of households about the idea of urban transformation on a district basis.
+
+[İl Düzeyinde Bina ve Konut Niteliklerine Göre Hanehalkı Sayısı vs Binanın İnşa Yılı](https://biruni.tuik.gov.tr/medas/) consists of the total number of households based on the year of construction of the buildings.
+
+[İl Düzeyinde Bina ve Konut Niteliklerine Göre Hanehalkı Sayısı vs Binanın Kat Sayısı](https://biruni.tuik.gov.tr/medas/) consists of the total number of households based on the number of floors of the buildings.
+
+[İlçe Bazlı Ortalama Hane Halkı Büyüklüğü](https://data.ibb.gov.tr/dataset/ilce-bazli-ortalama-hane-halki-buyuklugu/resource/da747beb-df41-474e-aa8a-93d983e69b15) is a dataset about the average household size on a district basis.
+
+[2019 Yılı Belediye Nüfusları](https://data.ibb.gov.tr/dataset/belediye-nufuslari-veri-seti/resource/c6c9b289-2824-41b3-ab3d-4fd655ed4e24) is a dataset about the population within the borders of each municipality.
+
+[İstanbul Çevresinde Gerçekleşen Depremler](https://data.ibb.gov.tr/dataset/istanbul-da-son-bir-yilda-gerceklesen-depremler/resource/32904f60-8091-4dc3-b527-351dca6c1c22) is a dataset about the earthquakes around Istanbul within 1 year. Each row represents an earthquake. In the columns, there are details about the earthquakes.
 
 ## 2.3 Reason of Choice
 
-xxxxxx
+Istanbul is a city where the risk of earthquake is said to be very high, and it is predicted to cause significant loss of life and property. Almost every day, warnings from experts about the earthquake, which is estimated to be between 7.2 and 7.6 in magnitude, can be seen in news and newspapers. I decided to work on such a current topic, to inform people through comprehensive analysis, to make them more aware, and to encourage taking steps against this disaster to get through with minimal damage.
 
 ## 2.4 Preprocessing
 
-xxxxxx
+There are 9 datasets in ".csv", ".xls" and ".xlsx" formats which were downloaded from the sources mentioned in the section [2.1 Data Source]. All these datasets have been merged into the same Excel file called "deprem.xlsx" and organized for a better use in the analysis. Each dataset is placed on a different sheet. After that, spelling errors on each dataset were corrected via Excel. In other words, correction of wrong letters was done. Finally, the "deprem.xlsx" file was read and stored in [.RData](https://github.com/emu-hacettepe-analytics/emu660-spring2024-aycacetin/tree/main) format using the code in the section [2.1 Data Source]. The [.RData](https://github.com/emu-hacettepe-analytics/emu660-spring2024-aycacetin/tree/main) file can be downloaded to review.
 
-# 3. Analysis
+![](images/326914863a3b4cac6ac6f4cc13b8d83e.gif){fig-align="center" width="200"}
 
-xxxxxx
+# 3. Analysis 🖥️
+
+```{r}
+#install.packages("ggplot2")
+library(ggplot2)
+library(dplyr)
+
+print("İlce bazinda hanelerdeki riskli yapi durumu hakkindaki bireysel ongorulerin oranlari:")
+
+evet<-sum(riskli_yapi_durumu$riskli_yapi_evet)
+hayir<-sum(riskli_yapi_durumu$riskli_yapi_hayir)
+bilmiyorum<-sum(riskli_yapi_durumu$riskli_yapi_bilmiyorum)
+oranlar<-c(riskli_yapi_evet=evet/(evet+hayir+bilmiyorum), 
+           riskli_yapi_hayir=hayir/(evet+hayir+bilmiyorum), 
+           riskli_yapi_bilmiyorum=bilmiyorum/(evet+hayir+bilmiyorum))
+print(oranlar)
+
+barplot(as.matrix(riskli_yapi_durumu[, -1]), beside=TRUE, col=c("green", "yellow", "red"),
+        legend.text=TRUE, args.legend=list(x="topright", bty="n"), 
+        main="Hanelerin Riskli Yapi Durumu Hakkindaki Bireysel Gorusleri",
+        xlab="Ilceler", ylab="Risk Durumu", names.arg=)
+
+print("İlce bazinda hanelerdeki kentsel donusum fikri hakkindaki bireysel ongorulerinin oranlari:")
+
+evet<-sum(kentsel_donusum_fikri$kentsel_donusum_ihtiyac_evet)
+hayir<-sum(kentsel_donusum_fikri$kentsel_donusum_ihtiyac_hayir)
+oranlar<-c(kentsel_donusum_ihtiyac_evet=evet/(evet+hayir), 
+           kentsel_donusum_ihtiyac_hayir=hayir/(evet+hayir))
+print(oranlar)
+```
 
 ## 3.1 Exploratory Data Analysis
 
@@ -52,6 +144,6 @@ xxxxxx
 
 xxxxxx
 
-# 4. Results and Key Takeaways
+# 4. Results and Key Takeaways 📈
 
 xxxxxx

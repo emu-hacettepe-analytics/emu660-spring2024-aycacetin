@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Ayça ÇETİN’s Analytics Lab - Project X</title>
+<title>Ayça ÇETİN’s Analytics Lab - Project</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -19,6 +19,40 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -113,7 +147,7 @@ ul.task-list li input[type="checkbox"] {
 </ul>
             <div class="quarto-navbar-tools ms-auto tools-wide">
     <a href="https://github.com/emu-hacettepe-analytics/emu660-spring2024-aycacetin" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <a href="./www.linkedin.com/in/ayça-çetin-4113b3208" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
+    <a href="https://www.linkedin.com/in/ayça-çetin-4113b3208" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-linkedin"></i></a>
   <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
 </div>
           </div> <!-- /navcollapse -->
@@ -124,7 +158,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Project X</li></ol></nav>
+      <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item">Project</li></ol></nav>
       <a class="flex-grow-1" role="button" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar,#quarto-sidebar-glass" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
       </a>
       <button type="button" class="btn quarto-search-button" aria-label="" onclick="window.quartoOpenSearch();">
@@ -168,22 +202,22 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#project-overview-and-scope" id="toc-project-overview-and-scope" class="nav-link active" data-scroll-target="#project-overview-and-scope">1. Project Overview and Scope</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">2. Data</a>
+  <li><a href="#project-overview-and-scope" id="toc-project-overview-and-scope" class="nav-link active" data-scroll-target="#project-overview-and-scope">1. Project Overview and Scope 🔎</a></li>
+  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data">2. Data 📄</a>
   <ul class="collapse">
   <li><a href="#data-source" id="toc-data-source" class="nav-link" data-scroll-target="#data-source">2.1 Data Source</a></li>
   <li><a href="#general-information-about-data" id="toc-general-information-about-data" class="nav-link" data-scroll-target="#general-information-about-data">2.2 General Information About Data</a></li>
   <li><a href="#reason-of-choice" id="toc-reason-of-choice" class="nav-link" data-scroll-target="#reason-of-choice">2.3 Reason of Choice</a></li>
   <li><a href="#preprocessing" id="toc-preprocessing" class="nav-link" data-scroll-target="#preprocessing">2.4 Preprocessing</a></li>
   </ul></li>
-  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">3. Analysis</a>
+  <li><a href="#analysis" id="toc-analysis" class="nav-link" data-scroll-target="#analysis">3. Analysis 🖥️</a>
   <ul class="collapse">
   <li><a href="#exploratory-data-analysis" id="toc-exploratory-data-analysis" class="nav-link" data-scroll-target="#exploratory-data-analysis">3.1 Exploratory Data Analysis</a></li>
   <li><a href="#trend-analysis" id="toc-trend-analysis" class="nav-link" data-scroll-target="#trend-analysis">3.2 Trend Analysis</a></li>
   <li><a href="#model-fitting" id="toc-model-fitting" class="nav-link" data-scroll-target="#model-fitting">3.3 Model Fitting</a></li>
   <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results">3.4 Results</a></li>
   </ul></li>
-  <li><a href="#results-and-key-takeaways" id="toc-results-and-key-takeaways" class="nav-link" data-scroll-target="#results-and-key-takeaways">4. Results and Key Takeaways</a></li>
+  <li><a href="#results-and-key-takeaways" id="toc-results-and-key-takeaways" class="nav-link" data-scroll-target="#results-and-key-takeaways">4. Results and Key Takeaways 📈</a></li>
   </ul>
 </nav>
 </nav>
@@ -196,7 +230,7 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Project X</h1>
+<h1 class="title">Project</h1>
 </div>
 
 
@@ -213,34 +247,141 @@ ul.task-list li input[type="checkbox"] {
 
 <p>Welcome to my project page.</p>
 <p>Keep an eye on this space to stay updated with my project activities.</p>
-<p>(The titles below are provided as examples; please feel free to adjust them as necessary.)</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/f481ba829592aa98ba4dc6d5d91c330b.gif" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
 <section id="project-overview-and-scope" class="level1">
-<h1>1. Project Overview and Scope</h1>
-<p>xxxxxx</p>
+<h1>1. Project Overview and Scope 🔎</h1>
+<p>Istanbul is not only Turkey’s but also Europe’s most populous city. Therefore, if a disaster such as an earthquake occurs, the potential of destruction and the need for help would be very high. Due to the earthquake disaster that occurred at the beginning of 2023, the risky condition of buildings and residences in Turkey has become a matter of concern for people.</p>
+<p>The purpose of this project is to examine Istanbul, which is almost certain to face a possible earthquake and significant destruction. The aim of the project is not only to assess buildings and residences in terms of their risky structural condition and make district-based interpretations but also to evaluate the opinions of people living in Istanbul and compare all the results.</p>
+<p>9 datasets were used for this purpose, various graphs were drawn and interpreted comprehensively to make inferences.</p>
 </section>
 <section id="data" class="level1">
-<h1>2. Data</h1>
-<p>xxxxxx</p>
+<h1>2. Data 📄</h1>
 <section id="data-source" class="level2">
 <h2 class="anchored" data-anchor-id="data-source">2.1 Data Source</h2>
-<p>xxxxxx</p>
+<ul>
+<li><p><a href="https://data.ibb.gov.tr/dataset/deprem-senaryosu-analiz-sonuclari/resource/9c3ac492-de4b-4245-b418-7ad3df67a193">Deprem Senaryosu Analiz Sonuçları</a></p></li>
+<li><p><a href="https://data.ibb.gov.tr/dataset/mahalle-bazli-bina-analiz-verisi/resource/cef193d5-0bd2-4e8d-8a69-275c50288875">2017 Yılı Mahalle Bazlı Bina Sayıları</a></p></li>
+<li><p><a href="https://data.ibb.gov.tr/dataset/vdym-ilce-bazinda-hanelerdeki-riskli-yapi-durumu-bireysel-ongoruleri/resource/52fe7088-62f2-4480-8f27-788dee385c9b">VDYM İlçe Bazında Hanelerdeki Riskli Yapı Durumu Bireysel Öngörüleri</a></p></li>
+<li><p><a href="https://data.ibb.gov.tr/dataset/vdym-ilce-bazinda-hanelerdeki-kentsel-donusum-fikri-bireysel-ongoruleri/resource/2683ee8b-9bc3-45cf-a115-49b285851317">VDYM İlçe Bazında Hanelerdeki Kentsel Dönüşüm Fikri Bireysel Öngörüleri</a></p></li>
+<li><p><a href="https://biruni.tuik.gov.tr/medas/">İl Düzeyinde Bina ve Konut Niteliklerine Göre Hanehalkı Sayısı vs Binanın İnşa Yılı</a></p></li>
+<li><p><a href="https://biruni.tuik.gov.tr/medas/">İl Düzeyinde Bina ve Konut Niteliklerine Göre Hanehalkı Sayısı vs Binanın Kat Sayısı</a></p></li>
+<li><p><a href="https://data.ibb.gov.tr/dataset/ilce-bazli-ortalama-hane-halki-buyuklugu/resource/da747beb-df41-474e-aa8a-93d983e69b15">İlçe Bazlı Ortalama Hane Halkı Büyüklüğü</a></p></li>
+<li><p><a href="https://data.ibb.gov.tr/dataset/belediye-nufuslari-veri-seti/resource/c6c9b289-2824-41b3-ab3d-4fd655ed4e24">2019 Yılı Belediye Nüfusları</a></p></li>
+<li><p><a href="https://data.ibb.gov.tr/dataset/istanbul-da-son-bir-yilda-gerceklesen-depremler/resource/32904f60-8091-4dc3-b527-351dca6c1c22">İstanbul Çevresinde Gerçekleşen Depremler</a></p></li>
+</ul>
+<p>Information and explanations about these datasets are included in the section <a href="#general-information-about-data">2.2 General Information About Data</a>.</p>
+<p>All this data was taken from <a href="https://data.ibb.gov.tr/dataset">İstanbul Büyükşehir Belediyesi Açık Veri Portalı</a> and <a href="https://biruni.tuik.gov.tr/medas/">TÜİK Merkezi Dağıtım Sistemi</a>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("readxl")</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readxl)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>deprem_senaryo<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"/Users/aycacetin/Desktop/deprem.xlsx"</span>, <span class="at">sheet=</span><span class="dv">1</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>bina_sayi<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"/Users/aycacetin/Desktop/deprem.xlsx"</span>, <span class="at">sheet=</span><span class="dv">2</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>riskli_yapi_durumu<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"/Users/aycacetin/Desktop/deprem.xlsx"</span>, <span class="at">sheet=</span><span class="dv">3</span>)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>kentsel_donusum_fikri<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"/Users/aycacetin/Desktop/deprem.xlsx"</span>, <span class="at">sheet=</span><span class="dv">4</span>)</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>insa_yilina_gore_hanehalki_sayisi<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"/Users/aycacetin/Desktop/deprem.xlsx"</span>, <span class="at">sheet=</span><span class="dv">5</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>kat_sayisina_gore_hanehalki_sayisi<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"/Users/aycacetin/Desktop/deprem.xlsx"</span>, <span class="at">sheet=</span><span class="dv">6</span>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>ort_hane<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"/Users/aycacetin/Desktop/deprem.xlsx"</span>, <span class="at">sheet=</span><span class="dv">7</span>)</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>belediye_nüfus<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"/Users/aycacetin/Desktop/deprem.xlsx"</span>, <span class="at">sheet=</span><span class="dv">8</span>)</span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>gerceklesen_deprem<span class="ot">&lt;-</span><span class="fu">read_excel</span>(<span class="st">"/Users/aycacetin/Desktop/deprem.xlsx"</span>, <span class="at">sheet=</span><span class="dv">9</span>)</span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(deprem_senaryo, <span class="at">file=</span><span class="st">"deprem_senaryo.RData"</span>)</span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(bina_sayi, <span class="at">file=</span><span class="st">"bina_sayi.RData"</span>)</span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(riskli_yapi_durumu, <span class="at">file=</span><span class="st">"riskli_yapi_durumu.RData"</span>)</span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(kentsel_donusum_fikri, <span class="at">file=</span><span class="st">"kentsel_donusum_fikri.RData"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(insa_yilina_gore_hanehalki_sayisi, <span class="at">file=</span><span class="st">"insa_yilina_gore_hanehalki_sayisi.RData"</span>)</span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(kat_sayisina_gore_hanehalki_sayisi, <span class="at">file=</span><span class="st">"kat_sayisina_gore_hanehalki_sayisi.RData"</span>)</span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(ort_hane, <span class="at">file=</span><span class="st">"ort_hane.RData"</span>)</span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(belediye_nüfus, <span class="at">file=</span><span class="st">"belediye_nüfus.RData"</span>)</span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(gerceklesen_deprem, <span class="at">file=</span><span class="st">"gerceklesen_deprem.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 </section>
 <section id="general-information-about-data" class="level2">
 <h2 class="anchored" data-anchor-id="general-information-about-data">2.2 General Information About Data</h2>
-<p>xxxxxx</p>
+<p><a href="https://data.ibb.gov.tr/dataset/deprem-senaryosu-analiz-sonuclari/resource/9c3ac492-de4b-4245-b418-7ad3df67a193">Deprem Senaryosu Analiz Sonuçları</a> is a dataset containing the results of an analysis made on an earthquake scenario that is predicted to have a magnitude of 7.5. Each row represents a neighbourhood. The columns have information mainly about the number of buildings based on damage level, the number of people based on vital status and pipe damages.</p>
+<p><a href="https://data.ibb.gov.tr/dataset/mahalle-bazli-bina-analiz-verisi/resource/cef193d5-0bd2-4e8d-8a69-275c50288875">2017 Yılı Mahalle Bazlı Bina Sayıları</a> is a dataset about the buildings. Each row represents a neighbourhood. The columns have information mainly about year of construction and number of floors of the buildings.</p>
+<p><a href="https://data.ibb.gov.tr/dataset/vdym-ilce-bazinda-hanelerdeki-riskli-yapi-durumu-bireysel-ongoruleri/resource/52fe7088-62f2-4480-8f27-788dee385c9b">VDYM İlçe Bazında Hanelerdeki Riskli Yapı Durumu Bireysel Öngörüleri</a> is a dataset about the opinions of households about the risky building situation on a district basis.</p>
+<p><a href="https://data.ibb.gov.tr/dataset/vdym-ilce-bazinda-hanelerdeki-kentsel-donusum-fikri-bireysel-ongoruleri/resource/2683ee8b-9bc3-45cf-a115-49b285851317">VDYM İlçe Bazında Hanelerdeki Kentsel Dönüşüm Fikri Bireysel Öngörüleri</a> is a dataset about the opinions of households about the idea of urban transformation on a district basis.</p>
+<p><a href="https://biruni.tuik.gov.tr/medas/">İl Düzeyinde Bina ve Konut Niteliklerine Göre Hanehalkı Sayısı vs Binanın İnşa Yılı</a> consists of the total number of households based on the year of construction of the buildings.</p>
+<p><a href="https://biruni.tuik.gov.tr/medas/">İl Düzeyinde Bina ve Konut Niteliklerine Göre Hanehalkı Sayısı vs Binanın Kat Sayısı</a> consists of the total number of households based on the number of floors of the buildings.</p>
+<p><a href="https://data.ibb.gov.tr/dataset/ilce-bazli-ortalama-hane-halki-buyuklugu/resource/da747beb-df41-474e-aa8a-93d983e69b15">İlçe Bazlı Ortalama Hane Halkı Büyüklüğü</a> is a dataset about the average household size on a district basis.</p>
+<p><a href="https://data.ibb.gov.tr/dataset/belediye-nufuslari-veri-seti/resource/c6c9b289-2824-41b3-ab3d-4fd655ed4e24">2019 Yılı Belediye Nüfusları</a> is a dataset about the population within the borders of each municipality.</p>
+<p><a href="https://data.ibb.gov.tr/dataset/istanbul-da-son-bir-yilda-gerceklesen-depremler/resource/32904f60-8091-4dc3-b527-351dca6c1c22">İstanbul Çevresinde Gerçekleşen Depremler</a> is a dataset about the earthquakes around Istanbul within 1 year. Each row represents an earthquake. In the columns, there are details about the earthquakes.</p>
 </section>
 <section id="reason-of-choice" class="level2">
 <h2 class="anchored" data-anchor-id="reason-of-choice">2.3 Reason of Choice</h2>
-<p>xxxxxx</p>
+<p>Istanbul is a city where the risk of earthquake is said to be very high, and it is predicted to cause significant loss of life and property. Almost every day, warnings from experts about the earthquake, which is estimated to be between 7.2 and 7.6 in magnitude, can be seen in news and newspapers. I decided to work on such a current topic, to inform people through comprehensive analysis, to make them more aware, and to encourage taking steps against this disaster to get through with minimal damage.</p>
 </section>
 <section id="preprocessing" class="level2">
 <h2 class="anchored" data-anchor-id="preprocessing">2.4 Preprocessing</h2>
-<p>xxxxxx</p>
+<p>There are 9 datasets in “.csv”, “.xls” and “.xlsx” formats which were downloaded from the sources mentioned in the section <a href="#data-source">2.1 Data Source</a>. All these datasets have been merged into the same Excel file called “deprem.xlsx” and organized for a better use in the analysis. Each dataset is placed on a different sheet. After that, spelling errors on each dataset were corrected via Excel. In other words, correction of wrong letters was done. Finally, the “deprem.xlsx” file was read and stored in <a href="https://github.com/emu-hacettepe-analytics/emu660-spring2024-aycacetin/tree/main">.RData</a> format using the code in the section <a href="#data-source">2.1 Data Source</a>. The <a href="https://github.com/emu-hacettepe-analytics/emu660-spring2024-aycacetin/tree/main">.RData</a> file can be downloaded to review.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/326914863a3b4cac6ac6f4cc13b8d83e.gif" class="img-fluid figure-img" width="200"></p>
+</figure>
+</div>
 </section>
 </section>
 <section id="analysis" class="level1">
-<h1>3. Analysis</h1>
-<p>xxxxxx</p>
+<h1>3. Analysis 🖥️</h1>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("ggplot2")</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"İlce bazinda hanelerdeki riskli yapi durumu hakkindaki bireysel ongorulerin oranlari:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "İlce bazinda hanelerdeki riskli yapi durumu hakkindaki bireysel ongorulerin oranlari:"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>evet<span class="ot">&lt;-</span><span class="fu">sum</span>(riskli_yapi_durumu<span class="sc">$</span>riskli_yapi_evet)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>hayir<span class="ot">&lt;-</span><span class="fu">sum</span>(riskli_yapi_durumu<span class="sc">$</span>riskli_yapi_hayir)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>bilmiyorum<span class="ot">&lt;-</span><span class="fu">sum</span>(riskli_yapi_durumu<span class="sc">$</span>riskli_yapi_bilmiyorum)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>oranlar<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">riskli_yapi_evet=</span>evet<span class="sc">/</span>(evet<span class="sc">+</span>hayir<span class="sc">+</span>bilmiyorum), </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">riskli_yapi_hayir=</span>hayir<span class="sc">/</span>(evet<span class="sc">+</span>hayir<span class="sc">+</span>bilmiyorum), </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">riskli_yapi_bilmiyorum=</span>bilmiyorum<span class="sc">/</span>(evet<span class="sc">+</span>hayir<span class="sc">+</span>bilmiyorum))</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(oranlar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      riskli_yapi_evet      riskli_yapi_hayir riskli_yapi_bilmiyorum 
+             0.1793526              0.6675207              0.1531267 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">as.matrix</span>(riskli_yapi_durumu[, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"green"</span>, <span class="st">"yellow"</span>, <span class="st">"red"</span>),</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text=</span><span class="cn">TRUE</span>, <span class="at">args.legend=</span><span class="fu">list</span>(<span class="at">x=</span><span class="st">"topright"</span>, <span class="at">bty=</span><span class="st">"n"</span>), </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"Hanelerin Riskli Yapi Durumu Hakkindaki Bireysel Gorusleri"</span>,</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">"Ilceler"</span>, <span class="at">ylab=</span><span class="st">"Risk Durumu"</span>, <span class="at">names.arg=</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="project_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
+</div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"İlce bazinda hanelerdeki kentsel donusum fikri hakkindaki bireysel ongorulerinin oranlari:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "İlce bazinda hanelerdeki kentsel donusum fikri hakkindaki bireysel ongorulerinin oranlari:"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>evet<span class="ot">&lt;-</span><span class="fu">sum</span>(kentsel_donusum_fikri<span class="sc">$</span>kentsel_donusum_ihtiyac_evet)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>hayir<span class="ot">&lt;-</span><span class="fu">sum</span>(kentsel_donusum_fikri<span class="sc">$</span>kentsel_donusum_ihtiyac_hayir)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>oranlar<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">kentsel_donusum_ihtiyac_evet=</span>evet<span class="sc">/</span>(evet<span class="sc">+</span>hayir), </span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">kentsel_donusum_ihtiyac_hayir=</span>hayir<span class="sc">/</span>(evet<span class="sc">+</span>hayir))</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(oranlar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> kentsel_donusum_ihtiyac_evet kentsel_donusum_ihtiyac_hayir 
+                    0.2255722                     0.7744278 </code></pre>
+</div>
+</div>
 <section id="exploratory-data-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="exploratory-data-analysis">3.1 Exploratory Data Analysis</h2>
 <p>xxxxxx</p>
@@ -259,7 +400,7 @@ ul.task-list li input[type="checkbox"] {
 </section>
 </section>
 <section id="results-and-key-takeaways" class="level1">
-<h1>4. Results and Key Takeaways</h1>
+<h1>4. Results and Key Takeaways 📈</h1>
 <p>xxxxxx</p>
 
 

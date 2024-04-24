@@ -99,6 +99,7 @@ apply(mtcars[cars, ], 2, custom_summary)
 ### (c) counting NA values and substituting with the number 660:
 
 ```{r}
+#install.packages("dslabs")
 library(dslabs)
 data(na_example)
 
