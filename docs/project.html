@@ -297,7 +297,43 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(kat_sayisina_gore_hanehalki_sayisi, <span class="at">file=</span><span class="st">"kat_sayisina_gore_hanehalki_sayisi.RData"</span>)</span>
 <span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(ort_hane, <span class="at">file=</span><span class="st">"ort_hane.RData"</span>)</span>
 <span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(belediye_nüfus, <span class="at">file=</span><span class="st">"belediye_nüfus.RData"</span>)</span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(gerceklesen_deprem, <span class="at">file=</span><span class="st">"gerceklesen_deprem.RData"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a><span class="fu">save</span>(gerceklesen_deprem, <span class="at">file=</span><span class="st">"gerceklesen_deprem.RData"</span>)</span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(deprem_senaryo)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [959 × 16] (S3: tbl_df/tbl/data.frame)
+ $ id                          : num [1:959] 1 2 3 4 5 6 7 8 9 10 ...
+ $ ilce_adi                    : chr [1:959] "ADALAR" "ADALAR" "ADALAR" "ADALAR" ...
+ $ mahalle_adi                 : chr [1:959] "BURGAZADA" "HEYBELİADA" "KINALIADA" "MADEN" ...
+ $ mahalle_koy_uavt            : num [1:959] 40139 40142 40143 40140 40141 ...
+ $ cok_agir_hasarli_bina_sayisi: num [1:959] 54 101 53 104 101 1 2 1 1 1 ...
+ $ agir_hasarli_bina_sayisi    : num [1:959] 99 175 97 192 180 3 13 6 6 5 ...
+ $ orta_hasarli_bina_sayisi    : num [1:959] 256 423 287 483 445 21 108 51 49 23 ...
+ $ hafif_hasarli_bina_sayisi   : num [1:959] 241 393 302 484 422 57 371 199 129 65 ...
+ $ can_kaybi_sayisi            : num [1:959] 8 25 5 22 16 0 0 0 0 0 ...
+ $ agir_yarali_sayisi          : num [1:959] 6 21 3 18 13 0 0 0 0 0 ...
+ $ hastanede_tedavi_sayisi     : num [1:959] 24 66 15 64 48 1 8 2 2 0 ...
+ $ hafif_yarali_sayisi         : num [1:959] 42 113 27 113 83 3 26 10 8 0 ...
+ $ dogalgaz_boru_hasari        : num [1:959] 0 1 0 1 1 0 1 0 0 0 ...
+ $ icme_suyu_boru_hasari       : num [1:959] 0 1 1 1 2 0 1 1 0 0 ...
+ $ atik_su_boru_hasari         : num [1:959] 1 2 1 2 2 0 1 1 0 0 ...
+ $ gecici_barinma              : num [1:959] 398 763 420 847 687 89 659 273 209 26 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(riskli_yapi_durumu)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [39 × 4] (S3: tbl_df/tbl/data.frame)
+ $ ilce                  : chr [1:39] "ADALAR" "ARNAVUTKÖY" "ATAŞEHİR" "AVCILAR" ...
+ $ riskli_yapi_evet      : num [1:39] 28 96 384 111 508 470 227 103 170 118 ...
+ $ riskli_yapi_hayir     : num [1:39] 295 603 910 971 1176 ...
+ $ riskli_yapi_bilmiyorum: num [1:39] 36 84 102 307 350 284 114 57 129 140 ...</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(kentsel_donusum_fikri)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>tibble [39 × 3] (S3: tbl_df/tbl/data.frame)
+ $ ilce                         : chr [1:39] "ADALAR" "ARNAVUTKÖY" "ATAŞEHİR" "AVCILAR" ...
+ $ kentsel_donusum_ihtiyac_evet : num [1:39] 40 100 457 240 607 536 263 59 190 158 ...
+ $ kentsel_donusum_ihtiyac_hayir: num [1:39] 319 683 939 1148 1427 ...</code></pre>
+</div>
 </div>
 </section>
 <section id="general-information-about-data" class="level2">
@@ -329,9 +365,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="analysis" class="level1">
 <h1>3. Analysis 🖥️</h1>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("ggplot2")</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("ggplot2")</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>
 Attaching package: 'dplyr'</code></pre>
@@ -346,37 +382,37 @@ Attaching package: 'dplyr'</code></pre>
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"İlce bazinda hanelerdeki riskli yapi durumu hakkindaki bireysel ongorulerin oranlari:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"İlce bazinda hanelerdeki riskli yapi durumu hakkindaki bireysel ongorulerin oranlari:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "İlce bazinda hanelerdeki riskli yapi durumu hakkindaki bireysel ongorulerin oranlari:"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>evet<span class="ot">&lt;-</span><span class="fu">sum</span>(riskli_yapi_durumu<span class="sc">$</span>riskli_yapi_evet)</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>hayir<span class="ot">&lt;-</span><span class="fu">sum</span>(riskli_yapi_durumu<span class="sc">$</span>riskli_yapi_hayir)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>bilmiyorum<span class="ot">&lt;-</span><span class="fu">sum</span>(riskli_yapi_durumu<span class="sc">$</span>riskli_yapi_bilmiyorum)</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>oranlar<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">riskli_yapi_evet=</span>evet<span class="sc">/</span>(evet<span class="sc">+</span>hayir<span class="sc">+</span>bilmiyorum), </span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">riskli_yapi_hayir=</span>hayir<span class="sc">/</span>(evet<span class="sc">+</span>hayir<span class="sc">+</span>bilmiyorum), </span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">riskli_yapi_bilmiyorum=</span>bilmiyorum<span class="sc">/</span>(evet<span class="sc">+</span>hayir<span class="sc">+</span>bilmiyorum))</span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(oranlar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>evet<span class="ot">&lt;-</span><span class="fu">sum</span>(riskli_yapi_durumu<span class="sc">$</span>riskli_yapi_evet)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>hayir<span class="ot">&lt;-</span><span class="fu">sum</span>(riskli_yapi_durumu<span class="sc">$</span>riskli_yapi_hayir)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>bilmiyorum<span class="ot">&lt;-</span><span class="fu">sum</span>(riskli_yapi_durumu<span class="sc">$</span>riskli_yapi_bilmiyorum)</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>oranlar<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">riskli_yapi_evet=</span>evet<span class="sc">/</span>(evet<span class="sc">+</span>hayir<span class="sc">+</span>bilmiyorum), </span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>           <span class="at">riskli_yapi_hayir=</span>hayir<span class="sc">/</span>(evet<span class="sc">+</span>hayir<span class="sc">+</span>bilmiyorum), </span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>           <span class="at">riskli_yapi_bilmiyorum=</span>bilmiyorum<span class="sc">/</span>(evet<span class="sc">+</span>hayir<span class="sc">+</span>bilmiyorum))</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(oranlar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>      riskli_yapi_evet      riskli_yapi_hayir riskli_yapi_bilmiyorum 
              0.1793526              0.6675207              0.1531267 </code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">as.matrix</span>(riskli_yapi_durumu[, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"green"</span>, <span class="st">"yellow"</span>, <span class="st">"red"</span>),</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text=</span><span class="cn">TRUE</span>, <span class="at">args.legend=</span><span class="fu">list</span>(<span class="at">x=</span><span class="st">"topright"</span>, <span class="at">bty=</span><span class="st">"n"</span>), </span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"Hanelerin Riskli Yapi Durumu Hakkindaki Bireysel Gorusleri"</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">"Ilceler"</span>, <span class="at">ylab=</span><span class="st">"Risk Durumu"</span>, <span class="at">names.arg=</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(<span class="fu">as.matrix</span>(riskli_yapi_durumu[, <span class="sc">-</span><span class="dv">1</span>]), <span class="at">beside=</span><span class="cn">TRUE</span>, <span class="at">col=</span><span class="fu">c</span>(<span class="st">"green"</span>, <span class="st">"yellow"</span>, <span class="st">"red"</span>),</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>        <span class="at">legend.text=</span><span class="cn">TRUE</span>, <span class="at">args.legend=</span><span class="fu">list</span>(<span class="at">x=</span><span class="st">"topright"</span>, <span class="at">bty=</span><span class="st">"n"</span>), </span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>        <span class="at">main=</span><span class="st">"Hanelerin Riskli Yapi Durumu Hakkindaki Bireysel Gorusleri"</span>,</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>        <span class="at">xlab=</span><span class="st">"Ilceler"</span>, <span class="at">ylab=</span><span class="st">"Risk Durumu"</span>, <span class="at">names.arg=</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <p><img src="project_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid" width="672"></p>
 </div>
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"İlce bazinda hanelerdeki kentsel donusum fikri hakkindaki bireysel ongorulerinin oranlari:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"İlce bazinda hanelerdeki kentsel donusum fikri hakkindaki bireysel ongorulerinin oranlari:"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] "İlce bazinda hanelerdeki kentsel donusum fikri hakkindaki bireysel ongorulerinin oranlari:"</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>evet<span class="ot">&lt;-</span><span class="fu">sum</span>(kentsel_donusum_fikri<span class="sc">$</span>kentsel_donusum_ihtiyac_evet)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>hayir<span class="ot">&lt;-</span><span class="fu">sum</span>(kentsel_donusum_fikri<span class="sc">$</span>kentsel_donusum_ihtiyac_hayir)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>oranlar<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">kentsel_donusum_ihtiyac_evet=</span>evet<span class="sc">/</span>(evet<span class="sc">+</span>hayir), </span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">kentsel_donusum_ihtiyac_hayir=</span>hayir<span class="sc">/</span>(evet<span class="sc">+</span>hayir))</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(oranlar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>evet<span class="ot">&lt;-</span><span class="fu">sum</span>(kentsel_donusum_fikri<span class="sc">$</span>kentsel_donusum_ihtiyac_evet)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>hayir<span class="ot">&lt;-</span><span class="fu">sum</span>(kentsel_donusum_fikri<span class="sc">$</span>kentsel_donusum_ihtiyac_hayir)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>oranlar<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="at">kentsel_donusum_ihtiyac_evet=</span>evet<span class="sc">/</span>(evet<span class="sc">+</span>hayir), </span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>           <span class="at">kentsel_donusum_ihtiyac_hayir=</span>hayir<span class="sc">/</span>(evet<span class="sc">+</span>hayir))</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(oranlar)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> kentsel_donusum_ihtiyac_evet kentsel_donusum_ihtiyac_hayir 
                     0.2255722                     0.7744278 </code></pre>

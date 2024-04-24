@@ -65,6 +65,10 @@ save(kat_sayisina_gore_hanehalki_sayisi, file="kat_sayisina_gore_hanehalki_sayis
 save(ort_hane, file="ort_hane.RData")
 save(belediye_nüfus, file="belediye_nüfus.RData")
 save(gerceklesen_deprem, file="gerceklesen_deprem.RData")
+
+str(deprem_senaryo)
+str(riskli_yapi_durumu)
+str(kentsel_donusum_fikri)
 ```
 
 ## 2.2 General Information About Data
