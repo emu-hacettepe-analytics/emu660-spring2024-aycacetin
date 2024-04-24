@@ -99,8 +99,6 @@ Istanbul is a city where the risk of earthquake is said to be very high, and it 
 
 There are 9 datasets in ".csv", ".xls" and ".xlsx" formats which were downloaded from the sources mentioned in the section [2.1 Data Source]. All these datasets have been merged into the same Excel file called "deprem.xlsx" and organized for a better use in the analysis. Each dataset is placed on a different sheet. After that, spelling errors on each dataset were corrected via Excel. In other words, correction of wrong letters was done. Finally, the "deprem.xlsx" file was read and stored in [.RData](https://github.com/emu-hacettepe-analytics/emu660-spring2024-aycacetin/tree/main) format using the code in the section [2.1 Data Source]. The [.RData](https://github.com/emu-hacettepe-analytics/emu660-spring2024-aycacetin/tree/main) file can be downloaded to review.
 
-![](images/326914863a3b4cac6ac6f4cc13b8d83e.gif){fig-align="center" width="200"}
-
 # 3. Analysis 🖥️
 
 ```{r}
