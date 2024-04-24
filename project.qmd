@@ -106,8 +106,13 @@ There are 9 datasets in ".csv", ".xls" and ".xlsx" formats which were downloaded
 library(ggplot2)
 library(dplyr)
 
-print("İlce bazinda hanelerdeki riskli yapi durumu hakkindaki bireysel ongorulerin oranlari:")
+p<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=cok_agir_hasarli_bina_sayisi))+geom_point()
+p
+```
 
+İlce bazinda hanelerdeki riskli yapi durumu hakkindaki bireysel ongorulerin oranlari:
+
+```{r}
 evet<-sum(riskli_yapi_durumu$riskli_yapi_evet)
 hayir<-sum(riskli_yapi_durumu$riskli_yapi_hayir)
 bilmiyorum<-sum(riskli_yapi_durumu$riskli_yapi_bilmiyorum)
@@ -120,9 +125,11 @@ barplot(as.matrix(riskli_yapi_durumu[, -1]), beside=TRUE, col=c("green", "yellow
         legend.text=TRUE, args.legend=list(x="topright", bty="n"), 
         main="Hanelerin Riskli Yapi Durumu Hakkindaki Bireysel Gorusleri",
         xlab="Ilceler", ylab="Risk Durumu", names.arg=)
+```
 
-print("İlce bazinda hanelerdeki kentsel donusum fikri hakkindaki bireysel ongorulerinin oranlari:")
+İlce bazinda hanelerdeki kentsel donusum fikri hakkindaki bireysel ongorulerinin oranlari:
 
+```{r}
 evet<-sum(kentsel_donusum_fikri$kentsel_donusum_ihtiyac_evet)
 hayir<-sum(kentsel_donusum_fikri$kentsel_donusum_ihtiyac_hayir)
 oranlar<-c(kentsel_donusum_ihtiyac_evet=evet/(evet+hayir), 
