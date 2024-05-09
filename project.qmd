@@ -6,8 +6,6 @@ Welcome to my project page.
 
 Keep an eye on this space to stay updated with my project activities.
 
-![](images/f481ba829592aa98ba4dc6d5d91c330b.gif){fig-align="center" width="200"}
-
 # 1. Project Overview and Scope 🔎
 
 Istanbul is not only Turkey's but also Europe's most populous city. Therefore, if a disaster such as an earthquake occurs, the potential of destruction and the need for help would be very high. Due to the earthquake disaster that occurred at the beginning of 2023, the risky condition of buildings and residences in Turkey has become a matter of concern for people.
@@ -67,8 +65,14 @@ save(belediye_nüfus, file="belediye_nüfus.RData")
 save(gerceklesen_deprem, file="gerceklesen_deprem.RData")
 
 str(deprem_senaryo)
+str(bina_sayi)
 str(riskli_yapi_durumu)
 str(kentsel_donusum_fikri)
+str(insa_yilina_gore_hanehalki_sayisi)
+str(kat_sayisina_gore_hanehalki_sayisi)
+str(ort_hane)
+str(belediye_nüfus)
+str(gerceklesen_deprem)
 ```
 
 ## 2.2 General Information About Data
@@ -101,45 +105,276 @@ There are 9 datasets in ".csv", ".xls" and ".xlsx" formats which were downloaded
 
 # 3. Analysis 🖥️
 
+## 3.1 Exploratory Data Analysis
+
 ```{r}
 #install.packages("ggplot2")
 library(ggplot2)
 library(dplyr)
-
-p<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=cok_agir_hasarli_bina_sayisi))+geom_point()
-p
 ```
 
-İlce bazinda hanelerdeki riskli yapi durumu hakkindaki bireysel ongorulerin oranlari:
+**"deprem_senaryo" analysis:**
+
+"ilçe bazında hasarlı bina sayıları" (4 types of damage):
+
+```{r}
+p1<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=cok_agir_hasarli_bina_sayisi))+
+  geom_point()+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("Çok Ağır Hasarlı Bina Sayısı")+
+  labs(title="İlçe Bazında Çok Ağır Hasarlı Bina Sayısı Dağılımı")
+p1
+p2<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=agir_hasarli_bina_sayisi))+
+  geom_point()+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("Ağır Hasarlı Bina Sayısı")+
+  labs(title="İlçe Bazında Ağır Hasarlı Bina Sayısı Dağılımı")
+p2
+p3<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=orta_hasarli_bina_sayisi))+
+  geom_point()+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("Orta Hasarlı Bina Sayısı")+
+  labs(title="İlçe Bazında Orta Hasarlı Bina Sayısı Dağılımı")
+p3
+p4<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=hafif_hasarli_bina_sayisi))+
+  geom_point()+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("Hafif Hasarlı Bina Sayısı")+
+  labs(title="İlçe Bazında Hafif Hasarlı Bina Sayısı Dağılımı")
+p4
+```
+
+"kişi sayıları" (4 types):
+
+```{r}
+p5<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=can_kaybi_sayisi))+
+  geom_point()+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("Can Kaybı Sayısı")+
+  labs(title="İlçe Bazında Can Kaybı Sayısı Dağılımı")
+p5
+p6<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=agir_yarali_sayisi))+
+  geom_point()+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("Ağır Yaralı Sayısı")+
+  labs(title="İlçe Bazında Ağır Yaralı Sayısı Dağılımı")
+p6
+p7<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=hastanede_tedavi_sayisi))+
+  geom_point()+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("Hastanede Tedavi Sayısı")+
+  labs(title="İlçe Bazında Hastanede Tedavi Sayısı Dağılımı")
+p7
+p8<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=hafif_yarali_sayisi))+
+  geom_point()+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("Hafif Yaralı Sayısı")+
+  labs(title="İlçe Bazında Hafif Yaralı Sayısı Dağılımı")
+p8
+```
+
+"boru hasarı" (3 types of damage):
+
+```{r}
+p9<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=dogalgaz_boru_hasari))+
+  geom_point()+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("Doğalgaz Boru Hasarı")+
+  labs(title="İlçe Bazında Doğalgaz Boru Hasarı Dağılımı")
+p9
+p10<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=icme_suyu_boru_hasari))+
+  geom_point()+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("İçme Suyu Boru Hasarı")+
+  labs(title="İlçe Bazında İçme Suyu Boru Hasarı Dağılımı")
+p10
+p11<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=atik_su_boru_hasari))+
+  geom_point()+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("Atık Su Boru Hasarı")+
+  labs(title="İlçe Bazında Atık Su Boru Hasarı Dağılımı")
+p11
+```
+
+"geçici barınma":
+
+```{r}
+p12<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=gecici_barinma))+
+  geom_point()+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("Geçici Barınma")+
+  labs(title="İlçe Bazında Geçici Barınma Dağılımı")
+p12
+```
+
+**"bina_sayi" analysis:**
+
+"ilçe bazında yıllara göre bina sayılarının oranları":
+
+```{r}
+once<-sum(bina_sayi$`1980_oncesi`)
+ara<-sum(bina_sayi$`1980-2000_arasi`)
+sonra<-sum(bina_sayi$`2000_sonrasi`)
+oranlar1<-c(once=once/(once+ara+sonra), 
+           ara=ara/(once+ara+sonra), 
+           sonra=sonra/(once+ara+sonra))
+print(oranlar1)
+```
+
+"ilçe bazında yıllara göre bina sayıları":
+
+```{r}
+p13<-ggplot(bina_sayi, aes(x=ilce_adi))+
+  geom_col(aes(y=`1980_oncesi`, fill="1980 Öncesi"), position=position_dodge(width=0.9))+
+  geom_col(aes(y=`1980-2000_arasi`, fill="1980-2000 Arası"), position=position_dodge(width=0.9))+
+  geom_col(aes(y=`2000_sonrasi`, fill="2000 Sonrası"), position=position_dodge(width=0.9))+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe")+
+  ylab("Bina Sayısı")+
+  labs(title="İlçe Bazında Yıllara Göre Bina Sayıları")
+p13
+```
+
+"ilçe bazında kat sayısına göre bina sayılarının oranları":
+
+```{r}
+alcak<-sum(bina_sayi$`1-4 kat_arasi`)
+orta<-sum(bina_sayi$`5-9 kat_arasi`)
+yuksek<-sum(bina_sayi$`9-19 kat_arasi`)
+oranlar2<-c(alcak=alcak/(alcak+orta+yuksek), 
+           orta=orta/(alcak+orta+yuksek), 
+           yuksek=yuksek/(alcak+orta+yuksek))
+print(oranlar2)
+```
+
+"ilçe bazında kat sayısına göre bina sayıları":
+
+```{r}
+p14<-ggplot(bina_sayi, aes(x=ilce_adi))+
+  geom_col(aes(y=`1-4 kat_arasi`, fill="1-4 kat_arasi"), position=position_dodge(width=0.9))+
+  geom_col(aes(y=`5-9 kat_arasi`, fill="5-9 kat_arasi"), position=position_dodge(width=0.9))+
+  geom_col(aes(y=`9-19 kat_arasi`, fill="9-19 kat_arasi"), position=position_dodge(width=0.9))+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe")+
+  ylab("Bina Sayısı")+
+  labs(title="İlçe Bazında Kat Sayısına Göre Bina Sayıları")
+p14
+```
+
+**"riskli_yapi_durumu" analysis:**
+
+"İlçe bazında hanelerdeki riskli yapı durumu hakkındaki bireysel öngörülerin oranları" (3 types of individual foresights):
 
 ```{r}
 evet<-sum(riskli_yapi_durumu$riskli_yapi_evet)
 hayir<-sum(riskli_yapi_durumu$riskli_yapi_hayir)
 bilmiyorum<-sum(riskli_yapi_durumu$riskli_yapi_bilmiyorum)
-oranlar<-c(riskli_yapi_evet=evet/(evet+hayir+bilmiyorum), 
+oranlar3<-c(riskli_yapi_evet=evet/(evet+hayir+bilmiyorum), 
            riskli_yapi_hayir=hayir/(evet+hayir+bilmiyorum), 
            riskli_yapi_bilmiyorum=bilmiyorum/(evet+hayir+bilmiyorum))
-print(oranlar)
-
-barplot(as.matrix(riskli_yapi_durumu[, -1]), beside=TRUE, col=c("green", "yellow", "red"),
-        legend.text=TRUE, args.legend=list(x="topright", bty="n"), 
-        main="Hanelerin Riskli Yapi Durumu Hakkindaki Bireysel Gorusleri",
-        xlab="Ilceler", ylab="Risk Durumu", names.arg=)
+print(oranlar3)
 ```
 
-İlce bazinda hanelerdeki kentsel donusum fikri hakkindaki bireysel ongorulerinin oranlari:
+"İlçe bazında hanelerdeki riskli yapı durumu hakkındaki bireysel öngörülerin dağılımı" (3 types of individual foresights):
+
+```{r}
+#veri çerçevesini uzun formata dönüştürme
+library(tidyr)
+riskli_yapi_durumu_duzenlenmis<-pivot_longer(riskli_yapi_durumu, cols=starts_with("riskli_yapi_"), names_to="ongoru", values_to="deger")
+
+p15<-ggplot(riskli_yapi_durumu_duzenlenmis, aes(x=ilce, y=deger, fill=ongoru))+
+  geom_bar(stat="identity", position="stack")+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe") +
+  ylab("Öngörü Sayısı") +
+  labs(title="İlçe Bazında Hanelerdeki Riskli Yapı Durumu Hakkındaki Bireysel Öngörüler")
+p15
+
+p16<-ggplot(riskli_yapi_durumu_duzenlenmis, aes(x=ilce, y=deger, fill=ongoru))+
+  geom_bar(stat="identity", position="dodge")+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe")+
+  ylab("Öngörü Sayısı")+
+  labs(title="İlçe Bazında Hanelerdeki Riskli Yapı Durumu Hakkındaki Bireysel Öngörüler")
+p16
+```
+
+**"kentsel_donusum_fikri" analysis:**
+
+"İlçe bazında hanelerdeki kentsel dönüşüm fikri hakkındaki bireysel öngörülerin oranları" (2 types of individual foresights):
 
 ```{r}
 evet<-sum(kentsel_donusum_fikri$kentsel_donusum_ihtiyac_evet)
 hayir<-sum(kentsel_donusum_fikri$kentsel_donusum_ihtiyac_hayir)
-oranlar<-c(kentsel_donusum_ihtiyac_evet=evet/(evet+hayir), 
+oranlar4<-c(kentsel_donusum_ihtiyac_evet=evet/(evet+hayir), 
            kentsel_donusum_ihtiyac_hayir=hayir/(evet+hayir))
-print(oranlar)
+print(oranlar4)
 ```
 
-## 3.1 Exploratory Data Analysis
+"İlçe bazında hanelerdeki kentsel dönüşüm fikri hakkındaki bireysel öngörülerin dağılımı" (2 types of individual foresights):
 
-xxxxxx
+```{r}
+#veri çerçevesini uzun formata dönüştürme
+library(tidyr)
+kentsel_donusum_fikri_duzenlenmis<-pivot_longer(kentsel_donusum_fikri, cols=starts_with("kentsel_donusum_ihtiyac_"), names_to="ongoru", values_to="deger")
+
+p17<-ggplot(kentsel_donusum_fikri_duzenlenmis, aes(x=ilce, y=deger, fill=ongoru))+
+  geom_bar(stat="identity", position="stack")+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe") +
+  ylab("Öngörü Sayısı") +
+  labs(title="İlçe Bazında Hanelerdeki Kentsel Dönüşüm Fikri Hakkındaki Bireysel Öngörüler")
+p17
+
+p18<-ggplot(kentsel_donusum_fikri_duzenlenmis, aes(x=ilce, y=deger, fill=ongoru))+
+  geom_bar(stat="identity", position="dodge")+
+  theme(axis.text.x=element_text(angle=90, hjust=1))+
+  xlab("İlçe")+
+  ylab("Öngörü Sayısı")+
+  labs(title="İlçe Bazında Hanelerdeki Kentsel Dönüşüm Fikri Hakkındaki Bireysel Öngörüler")
+p18
+```
+
+**"gerceklesen_deprem" analysis:**
+
+Analyzing this data could be crucial for examining earthquake activity and identifying potential risks. However, predicting future earthquake magnitudes is a complex thing to do because earthquakes are random and unpredictible.
+
+"İstanbul Çevresinde Gerçekleşen Depremlerin Büyüklüklerinin Zaman Serisi Grafiği":
+
+```{r}
+#time sütununu işleme
+gerceklesen_deprem$time<-as.POSIXct(gerceklesen_deprem$time, format="%Y-%m-%dT%H:%M:%OSZ")
+
+library(ggplot2)
+
+p19<-ggplot(gerceklesen_deprem, aes(x=time, y=magnitude))+
+  geom_line()+
+  labs(title="İstanbul Çevresinde Gerçekleşen Depremlerin Büyüklüklükleri", x="Tarih", y="Büyüklük")+
+  theme_minimal()+
+  scale_x_datetime(date_breaks="1 month", date_labels="%b %Y")+
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, hjust=1))
+p19
+
+p20<-ggplot(gerceklesen_deprem, aes(x=time, y=`depth/km`))+
+  geom_line()+
+  labs(title="İstanbul Çevresinde Gerçekleşen Depremlerin Derinlikleri", x="Tarih", y="Derinlik")+
+  theme_minimal()+
+  scale_x_datetime(date_breaks="1 month", date_labels="%b %Y")+
+  theme(axis.text.x=element_text(angle=90, vjust=0.5, hjust=1))
+p20
+```
 
 ## 3.2 Trend Analysis
 
