@@ -44,15 +44,17 @@ All this data was taken from [İstanbul Büyükşehir Belediyesi Açık Ver
 #install.packages("readxl")
 library(readxl)
 
-deprem_senaryo<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=1)
-bina_sayi<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=2)
-riskli_yapi_durumu<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=3)
-kentsel_donusum_fikri<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=4)
-insa_yilina_gore_hanehalki_sayisi<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=5)
-kat_sayisina_gore_hanehalki_sayisi<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=6)
-ort_hane<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=7)
-belediye_nüfus<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=8)
-gerceklesen_deprem<-read_excel("/Users/aycacetin/Desktop/deprem.xlsx", sheet=9)
+dosya_yolu<-"/Users/aycacetin/Documents/GitHub/emu660-spring2024-aycacetin/assets/deprem.xlsx"
+
+deprem_senaryo<-read_excel(dosya_yolu, sheet=1)
+bina_sayi<-read_excel(dosya_yolu, sheet=2)
+riskli_yapi_durumu<-read_excel(dosya_yolu, sheet=3)
+kentsel_donusum_fikri<-read_excel(dosya_yolu, sheet=4)
+insa_yilina_gore_hanehalki_sayisi<-read_excel(dosya_yolu, sheet=5)
+kat_sayisina_gore_hanehalki_sayisi<-read_excel(dosya_yolu, sheet=6)
+ort_hane<-read_excel(dosya_yolu, sheet=7)
+belediye_nüfus<-read_excel(dosya_yolu, sheet=8)
+gerceklesen_deprem<-read_excel(dosya_yolu, sheet=9)
 
 save(deprem_senaryo, file="deprem_senaryo.RData")
 save(bina_sayi, file="bina_sayi.RData")
@@ -111,6 +113,7 @@ There are 9 datasets in ".csv", ".xls" and ".xlsx" formats which were downloaded
 #install.packages("ggplot2")
 library(ggplot2)
 library(dplyr)
+library(tidyverse)
 ```
 
 **"deprem_senaryo" analysis:**
@@ -301,14 +304,6 @@ p15<-ggplot(riskli_yapi_durumu_duzenlenmis, aes(x=ilce, y=deger, fill=ongoru))+
   ylab("Öngörü Sayısı") +
   labs(title="İlçe Bazında Hanelerdeki Riskli Yapı Durumu Hakkındaki Bireysel Öngörüler")
 p15
-
-p16<-ggplot(riskli_yapi_durumu_duzenlenmis, aes(x=ilce, y=deger, fill=ongoru))+
-  geom_bar(stat="identity", position="dodge")+
-  theme(axis.text.x=element_text(angle=90, hjust=1))+
-  xlab("İlçe")+
-  ylab("Öngörü Sayısı")+
-  labs(title="İlçe Bazında Hanelerdeki Riskli Yapı Durumu Hakkındaki Bireysel Öngörüler")
-p16
 ```
 
 **"kentsel_donusum_fikri" analysis:**
@@ -337,14 +332,6 @@ p17<-ggplot(kentsel_donusum_fikri_duzenlenmis, aes(x=ilce, y=deger, fill=ongoru)
   ylab("Öngörü Sayısı") +
   labs(title="İlçe Bazında Hanelerdeki Kentsel Dönüşüm Fikri Hakkındaki Bireysel Öngörüler")
 p17
-
-p18<-ggplot(kentsel_donusum_fikri_duzenlenmis, aes(x=ilce, y=deger, fill=ongoru))+
-  geom_bar(stat="identity", position="dodge")+
-  theme(axis.text.x=element_text(angle=90, hjust=1))+
-  xlab("İlçe")+
-  ylab("Öngörü Sayısı")+
-  labs(title="İlçe Bazında Hanelerdeki Kentsel Dönüşüm Fikri Hakkındaki Bireysel Öngörüler")
-p18
 ```
 
 **"gerceklesen_deprem" analysis:**
@@ -376,6 +363,31 @@ p20<-ggplot(gerceklesen_deprem, aes(x=time, y=`depth/km`))+
 p20
 ```
 
+"İstanbul Çevresinde Gerçekleşen Depremlerin Harita Üzerinde Gösterimi":
+
+```{r}
+#leaflet paketini yükleme
+#install.packages("leaflet")
+library(leaflet)
+
+#veri çerçevesi oluşturma
+depremler<-data.frame(name=gerceklesen_deprem$event_id,
+                   latitude=gerceklesen_deprem$latitude,
+                   longitude=gerceklesen_deprem$longitude)
+
+#İstanbul haritasını oluşturma
+istanbul_map<-leaflet()%>%setView(lng=28.9784, lat=41.0082, zoom=11)%>%addTiles() 
+
+#verileri haritaya ekleme
+for(i in 1:nrow(depremler)){
+  istanbul_map<-addMarkers(istanbul_map, lng=depremler$longitude[i], lat=depremler$latitude[i], popup=depremler$name[i])
+  }
+
+#haritayı görüntüleme
+istanbul_map
+
+```
+
 ## 3.2 Trend Analysis
 
 xxxxxx
@@ -390,4 +402,6 @@ xxxxxx
 
 # 4. Results and Key Takeaways 📈
 
-xxxxxx
+3-5 bullet points
+
+\*ChatGPT was utilized.
