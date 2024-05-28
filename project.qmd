@@ -53,7 +53,7 @@ kentsel_donusum_fikri<-read_excel(dosya_yolu, sheet=4)
 insa_yilina_gore_hanehalki_sayisi<-read_excel(dosya_yolu, sheet=5)
 kat_sayisina_gore_hanehalki_sayisi<-read_excel(dosya_yolu, sheet=6)
 ort_hane<-read_excel(dosya_yolu, sheet=7)
-belediye_nüfus<-read_excel(dosya_yolu, sheet=8)
+belediye_nufus<-read_excel(dosya_yolu, sheet=8)
 gerceklesen_deprem<-read_excel(dosya_yolu, sheet=9)
 
 save(deprem_senaryo, file="deprem_senaryo.RData")
@@ -63,7 +63,7 @@ save(kentsel_donusum_fikri, file="kentsel_donusum_fikri.RData")
 save(insa_yilina_gore_hanehalki_sayisi, file="insa_yilina_gore_hanehalki_sayisi.RData")
 save(kat_sayisina_gore_hanehalki_sayisi, file="kat_sayisina_gore_hanehalki_sayisi.RData")
 save(ort_hane, file="ort_hane.RData")
-save(belediye_nüfus, file="belediye_nüfus.RData")
+save(belediye_nufus, file="belediye_nufus.RData")
 save(gerceklesen_deprem, file="gerceklesen_deprem.RData")
 
 str(deprem_senaryo)
@@ -73,7 +73,7 @@ str(kentsel_donusum_fikri)
 str(insa_yilina_gore_hanehalki_sayisi)
 str(kat_sayisina_gore_hanehalki_sayisi)
 str(ort_hane)
-str(belediye_nüfus)
+str(belediye_nufus)
 str(gerceklesen_deprem)
 ```
 
@@ -334,6 +334,44 @@ p17<-ggplot(kentsel_donusum_fikri_duzenlenmis, aes(x=ilce, y=deger, fill=ongoru)
 p17
 ```
 
+**"ort_hane" analysis:**
+
+"İlçe Bazlı Ortalama Hanehalkı Büyüklüğü":
+
+```{r}
+#ortalama hanehalkı büyüklüğüne göre büyükten küçüğe sıralama
+ort_hane2<-ort_hane%>%mutate(ilce=fct_reorder(ilce, ortalama_hanehalki_buyuklugu, .desc=TRUE))
+
+p18<-ggplot(ort_hane2, aes(x=ilce, y=ortalama_hanehalki_buyuklugu))+
+  geom_bar(stat="identity")+
+  theme(axis.text.x=element_text(angle=45, hjust=1))+
+  xlab("İlçe Adı")+
+  ylab("Ortalama Hanehalkı Büyüklüğü")+
+  labs(title="İlçe Bazında Ortalama Hanehalkı Büyüklüğü")
+p18
+```
+
+We can see from the graph that in more than half of the districts in İstanbul, the average household size is more than 3.
+
+**"belediye_nufus" analysis:**
+
+"2019 Yılı Belediye Nüfusları" Grafiği:
+
+```{r}
+#ortalama hanehalkı büyüklüğüne göre büyükten küçüğe sıralama
+belediye_nufus2<-belediye_nufus%>%mutate(belediye=fct_reorder(belediye, nufus_2019, .desc=TRUE))
+
+p21<-ggplot(belediye_nufus2, aes(x=belediye, y=nufus_2019))+
+  geom_bar(stat="identity")+
+  theme(axis.text.x=element_text(angle=45, hjust=1))+
+  xlab("Belediye Adı")+
+  ylab("Ortalama Hanehalkı Büyüklüğü")+
+  labs(title="Belediye Bazında 2019 Yılı Belediye Nüfusları Büyüklüğü")
+p21
+```
+
+Similarly, we can visualize the dataset titled "2019 Yılı Belediye Nüfusları". We can see from the graph that 2 municipalities, Esenyurt and Küçükçekmece, are over 750.000. We can also see from the graph that the first one-third of the municipalities are over 500.000. From this, we can identify the most populous municipalities that would need the most help in an earthquake disaster.
+
 **"gerceklesen_deprem" analysis:**
 
 Analyzing this data could be crucial for examining earthquake activity and identifying potential risks. However, predicting future earthquake magnitudes is a complex thing to do because earthquakes are random and unpredictible.
@@ -363,6 +401,8 @@ p20<-ggplot(gerceklesen_deprem, aes(x=time, y=`depth/km`))+
 p20
 ```
 
+What stands out in both graphs is the increase in earthquake frequencies after January 2020. This indicates that the danger is coming.
+
 "İstanbul Çevresinde Gerçekleşen Depremlerin Harita Üzerinde Gösterimi":
 
 ```{r}
@@ -388,6 +428,12 @@ istanbul_map
 
 ```
 
+"İstanbul Çevresinde Gerçekleşen Depremlere ait Veriler ile Tahmin":
+
+```{r}
+
+```
+
 ## 3.2 Trend Analysis
 
 xxxxxx
@@ -402,6 +448,6 @@ xxxxxx
 
 # 4. Results and Key Takeaways 📈
 
-3-5 bullet points
+-   3-5
 
 \*ChatGPT was utilized.
