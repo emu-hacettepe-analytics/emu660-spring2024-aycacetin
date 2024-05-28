@@ -122,6 +122,8 @@ count
 
 Dataset with NA values
 
+<img src="images/before.png" />
+
 ![](/assets/images/before.png){fig-align="left"}
 
 ![](images/before.png){fig-align="left" width="500"}
