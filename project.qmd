@@ -12,7 +12,7 @@ Istanbul is not only Turkey's but also Europe's most populous city. Therefore, i
 
 The purpose of this project is to examine Istanbul, which is almost certain to face a possible earthquake and significant destruction. The aim of the project is not only to assess buildings and residences in terms of their risky structural condition and make district-based interpretations but also to evaluate the opinions of people living in Istanbul and compare all the results.
 
-9 datasets were used for this purpose, various graphs were drawn and interpreted comprehensively to make inferences.
+7 datasets were used for this purpose, various graphs were drawn and interpreted comprehensively to make inferences.
 
 # 2. Data 📄
 
@@ -25,10 +25,6 @@ The purpose of this project is to examine Istanbul, which is almost certain to f
 -   [VDYM İlçe Bazında Hanelerdeki Riskli Yapı Durumu Bireysel Öngörüleri](https://data.ibb.gov.tr/dataset/vdym-ilce-bazinda-hanelerdeki-riskli-yapi-durumu-bireysel-ongoruleri/resource/52fe7088-62f2-4480-8f27-788dee385c9b)
 
 -   [VDYM İlçe Bazında Hanelerdeki Kentsel Dönüşüm Fikri Bireysel Öngörüleri](https://data.ibb.gov.tr/dataset/vdym-ilce-bazinda-hanelerdeki-kentsel-donusum-fikri-bireysel-ongoruleri/resource/2683ee8b-9bc3-45cf-a115-49b285851317)
-
--   [İl Düzeyinde Bina ve Konut Niteliklerine Göre Hanehalkı Sayısı vs Binanın İnşa Yılı](https://biruni.tuik.gov.tr/medas/)
-
--   [İl Düzeyinde Bina ve Konut Niteliklerine Göre Hanehalkı Sayısı vs Binanın Kat Sayısı](https://biruni.tuik.gov.tr/medas/)
 
 -   [İlçe Bazlı Ortalama Hane Halkı Büyüklüğü](https://data.ibb.gov.tr/dataset/ilce-bazli-ortalama-hane-halki-buyuklugu/resource/da747beb-df41-474e-aa8a-93d983e69b15)
 
@@ -50,8 +46,6 @@ deprem_senaryo<-read_excel(dosya_yolu, sheet=1)
 bina_sayi<-read_excel(dosya_yolu, sheet=2)
 riskli_yapi_durumu<-read_excel(dosya_yolu, sheet=3)
 kentsel_donusum_fikri<-read_excel(dosya_yolu, sheet=4)
-insa_yilina_gore_hanehalki_sayisi<-read_excel(dosya_yolu, sheet=5)
-kat_sayisina_gore_hanehalki_sayisi<-read_excel(dosya_yolu, sheet=6)
 ort_hane<-read_excel(dosya_yolu, sheet=7)
 belediye_nufus<-read_excel(dosya_yolu, sheet=8)
 gerceklesen_deprem<-read_excel(dosya_yolu, sheet=9)
@@ -60,8 +54,6 @@ save(deprem_senaryo, file="deprem_senaryo.RData")
 save(bina_sayi, file="bina_sayi.RData")
 save(riskli_yapi_durumu, file="riskli_yapi_durumu.RData")
 save(kentsel_donusum_fikri, file="kentsel_donusum_fikri.RData")
-save(insa_yilina_gore_hanehalki_sayisi, file="insa_yilina_gore_hanehalki_sayisi.RData")
-save(kat_sayisina_gore_hanehalki_sayisi, file="kat_sayisina_gore_hanehalki_sayisi.RData")
 save(ort_hane, file="ort_hane.RData")
 save(belediye_nufus, file="belediye_nufus.RData")
 save(gerceklesen_deprem, file="gerceklesen_deprem.RData")
@@ -70,8 +62,6 @@ str(deprem_senaryo)
 str(bina_sayi)
 str(riskli_yapi_durumu)
 str(kentsel_donusum_fikri)
-str(insa_yilina_gore_hanehalki_sayisi)
-str(kat_sayisina_gore_hanehalki_sayisi)
 str(ort_hane)
 str(belediye_nufus)
 str(gerceklesen_deprem)
@@ -87,10 +77,6 @@ str(gerceklesen_deprem)
 
 [VDYM İlçe Bazında Hanelerdeki Kentsel Dönüşüm Fikri Bireysel Öngörüleri](https://data.ibb.gov.tr/dataset/vdym-ilce-bazinda-hanelerdeki-kentsel-donusum-fikri-bireysel-ongoruleri/resource/2683ee8b-9bc3-45cf-a115-49b285851317) is a dataset about the opinions of households about the idea of urban transformation on a district basis.
 
-[İl Düzeyinde Bina ve Konut Niteliklerine Göre Hanehalkı Sayısı vs Binanın İnşa Yılı](https://biruni.tuik.gov.tr/medas/) consists of the total number of households based on the year of construction of the buildings.
-
-[İl Düzeyinde Bina ve Konut Niteliklerine Göre Hanehalkı Sayısı vs Binanın Kat Sayısı](https://biruni.tuik.gov.tr/medas/) consists of the total number of households based on the number of floors of the buildings.
-
 [İlçe Bazlı Ortalama Hane Halkı Büyüklüğü](https://data.ibb.gov.tr/dataset/ilce-bazli-ortalama-hane-halki-buyuklugu/resource/da747beb-df41-474e-aa8a-93d983e69b15) is a dataset about the average household size on a district basis.
 
 [2019 Yılı Belediye Nüfusları](https://data.ibb.gov.tr/dataset/belediye-nufuslari-veri-seti/resource/c6c9b289-2824-41b3-ab3d-4fd655ed4e24) is a dataset about the population within the borders of each municipality.
@@ -103,11 +89,13 @@ Istanbul is a city where the risk of earthquake is said to be very high, and it 
 
 ## 2.4 Preprocessing
 
-There are 9 datasets in ".csv", ".xls" and ".xlsx" formats which were downloaded from the sources mentioned in the section [2.1 Data Source]. All these datasets have been merged into the same Excel file called "deprem.xlsx" and organized for a better use in the analysis. Each dataset is placed on a different sheet. After that, spelling errors on each dataset were corrected via Excel. In other words, correction of wrong letters was done. Finally, the "deprem.xlsx" file was read and stored in [.RData](https://github.com/emu-hacettepe-analytics/emu660-spring2024-aycacetin/tree/main) format using the code in the section [2.1 Data Source]. The [.RData](https://github.com/emu-hacettepe-analytics/emu660-spring2024-aycacetin/tree/main) file can be downloaded to review.
+There are 7 datasets in ".csv", ".xls" and ".xlsx" formats which were downloaded from the sources mentioned in the section [2.1 Data Source]. All these datasets have been merged into the same Excel file called "deprem.xlsx" and organized for a better use in the analysis. Each dataset is placed on a different sheet. After that, spelling errors on each dataset were corrected via Excel. In other words, correction of wrong letters was done. Finally, the "deprem.xlsx" file was read and stored in [.RData](https://github.com/emu-hacettepe-analytics/emu660-spring2024-aycacetin/tree/main) format using the code in the section [2.1 Data Source]. The [.RData](https://github.com/emu-hacettepe-analytics/emu660-spring2024-aycacetin/tree/main) file can be downloaded to review.
 
 # 3. Analysis 🖥️
 
 ## 3.1 Exploratory Data Analysis
+
+### Analysis of the Datasets
 
 ```{r}
 #install.packages("ggplot2")
@@ -118,7 +106,17 @@ library(tidyverse)
 
 **"deprem_senaryo" analysis:**
 
+The analysis began with the "deprem_senaryo" dataset. Initially, plots were created using data about the number of damaged buildings, the number of injured people and the number of pipeline damages. And then, the need for temporary shelter was assesed.
+
+Although the data is based on neighborhoods, the analyses have been done based on districts.
+
 "ilçe bazında hasarlı bina sayıları" (4 types of damage):
+
+-   Bakırköy, Fatih and Küçükçekmece on the "Çok Ağır Hasarlı Binalar" plot,
+
+-   Avıclar and Bakırköy on the "Ağır Hasarlı Binalar" plot,
+
+-   Avcılar on the "Orta Hasarlı Binalar" and "Hafif Hasarlı Binalar" plot were attention-grabbing.
 
 ```{r}
 p1<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=cok_agir_hasarli_bina_sayisi))+
@@ -153,6 +151,12 @@ p4
 
 "kişi sayıları" (4 types):
 
+-   Bahçelievler and Bakırköy on the "Can Kaybı" plot,
+
+-   Bahçelievler, Bakırköy, Fatih and Küçükçekmece on the "Ağır Yaralı" plot,
+
+-   Bahçelievler, Bakırköy and Küçükçekmece on the "Hastanede Tedavi" and "Hafif Yaralı" plot were attention-grabbing.
+
 ```{r}
 p5<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=can_kaybi_sayisi))+
   geom_point()+
@@ -186,6 +190,12 @@ p8
 
 "boru hasarı" (3 types of damage):
 
+-   Avcılar and Beylikdüzü on the "Doğalgaz Boru Hasarı" plot,
+
+-   Beylikdüzü on the "İçme Suyu Boru Hasarı" plot,
+
+-   Avcılar, Bakırköy, Beylikdüzü and Tuzla on the "Atık Su Boru Hasarı" plot were attention-grabbing.
+
 ```{r}
 p9<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=dogalgaz_boru_hasari))+
   geom_point()+
@@ -212,6 +222,8 @@ p11
 
 "geçici barınma":
 
+-   Avcılar, Bahçelievler, Beylikdüzü, Küçükçekmece and Zeytinburnu on the "Atık Su Boru Hasarı" plot were attention-grabbing.
+
 ```{r}
 p12<-deprem_senaryo%>%ggplot(aes(x=ilce_adi, y=gecici_barinma))+
   geom_point()+
@@ -224,7 +236,13 @@ p12
 
 **"bina_sayi" analysis:**
 
+The analysis continued with the "bina_sayi" dataset, evaluating buildings based on their construction year and number of floors.
+
+Although the data is based on neighborhoods, the analyses have been done based on districts.
+
 "ilçe bazında yıllara göre bina sayılarının oranları":
+
+It has been observed that the majority of the buildings were constructed between 1980 and 2000.
 
 ```{r}
 once<-sum(bina_sayi$`1980_oncesi`)
@@ -237,6 +255,8 @@ print(oranlar1)
 ```
 
 "ilçe bazında yıllara göre bina sayıları":
+
+-   Beyoğlu, Fatih and Kadıköy on the "Yıllara Göre Bina Sayıları" plot were attention-grabbing.
 
 ```{r}
 p13<-ggplot(bina_sayi, aes(x=ilce_adi))+
@@ -251,6 +271,8 @@ p13
 ```
 
 "ilçe bazında kat sayısına göre bina sayılarının oranları":
+
+It has been observed that the majority of the buildings are 1-4 stories tall.
 
 ```{r}
 alcak<-sum(bina_sayi$`1-4 kat_arasi`)
@@ -278,7 +300,11 @@ p14
 
 **"riskli_yapi_durumu" analysis:**
 
+An analysis of individual perceptions regarding the structural risk of their households have been conducted.
+
 "İlçe bazında hanelerdeki riskli yapı durumu hakkındaki bireysel öngörülerin oranları" (3 types of individual foresights):
+
+It has been observed that a significant number of people answered "yes" or "I don't know.".
 
 ```{r}
 evet<-sum(riskli_yapi_durumu$riskli_yapi_evet)
@@ -291,6 +317,8 @@ print(oranlar3)
 ```
 
 "İlçe bazında hanelerdeki riskli yapı durumu hakkındaki bireysel öngörülerin dağılımı" (3 types of individual foresights):
+
+In some districts, the green segments representing those who believe they live in risky structures are particularly noticeable.
 
 ```{r}
 #veri çerçevesini uzun formata dönüştürme
@@ -308,7 +336,11 @@ p15
 
 **"kentsel_donusum_fikri" analysis:**
 
+An analysis of individual perceptions regarding the idea of urban transformation of their households have been conducted.
+
 "İlçe bazında hanelerdeki kentsel dönüşüm fikri hakkındaki bireysel öngörülerin oranları" (2 types of individual foresights):
+
+It has been observed that there is a significant number of people who consider urban transformation necessary and cannot be underestimated.
 
 ```{r}
 evet<-sum(kentsel_donusum_fikri$kentsel_donusum_ihtiyac_evet)
@@ -320,35 +352,39 @@ print(oranlar4)
 
 "İlçe bazında hanelerdeki kentsel dönüşüm fikri hakkındaki bireysel öngörülerin dağılımı" (2 types of individual foresights):
 
+In some districts, the red segments representing those who believe in the need of urban transformation are particularly noticeable.
+
 ```{r}
 #veri çerçevesini uzun formata dönüştürme
 library(tidyr)
 kentsel_donusum_fikri_duzenlenmis<-pivot_longer(kentsel_donusum_fikri, cols=starts_with("kentsel_donusum_ihtiyac_"), names_to="ongoru", values_to="deger")
 
-p17<-ggplot(kentsel_donusum_fikri_duzenlenmis, aes(x=ilce, y=deger, fill=ongoru))+
+p16<-ggplot(kentsel_donusum_fikri_duzenlenmis, aes(x=ilce, y=deger, fill=ongoru))+
   geom_bar(stat="identity", position="stack")+
   theme(axis.text.x=element_text(angle=90, hjust=1))+
   xlab("İlçe") +
   ylab("Öngörü Sayısı") +
   labs(title="İlçe Bazında Hanelerdeki Kentsel Dönüşüm Fikri Hakkındaki Bireysel Öngörüler")
-p17
+p16
 ```
 
 **"ort_hane" analysis:**
 
 "İlçe Bazlı Ortalama Hanehalkı Büyüklüğü":
 
+In the analysis of the "ort_hane" dataset, districts have been ranked from highest to lowest average household size and it has been observed that the most crowded households are in Sultanbeyli.
+
 ```{r}
 #ortalama hanehalkı büyüklüğüne göre büyükten küçüğe sıralama
 ort_hane2<-ort_hane%>%mutate(ilce=fct_reorder(ilce, ortalama_hanehalki_buyuklugu, .desc=TRUE))
 
-p18<-ggplot(ort_hane2, aes(x=ilce, y=ortalama_hanehalki_buyuklugu))+
+p17<-ggplot(ort_hane2, aes(x=ilce, y=ortalama_hanehalki_buyuklugu))+
   geom_bar(stat="identity")+
   theme(axis.text.x=element_text(angle=45, hjust=1))+
   xlab("İlçe Adı")+
   ylab("Ortalama Hanehalkı Büyüklüğü")+
   labs(title="İlçe Bazında Ortalama Hanehalkı Büyüklüğü")
-p18
+p17
 ```
 
 We can see from the graph that in more than half of the districts in İstanbul, the average household size is more than 3.
@@ -357,20 +393,22 @@ We can see from the graph that in more than half of the districts in İstanbul, 
 
 "2019 Yılı Belediye Nüfusları" Grafiği:
 
+In the analysis of the "belediye_nufus" dataset, municipalities have been ranked from highest to lowest population and it has been observed that the most crowded municipality is the Esenyurt Municipality.
+
 ```{r}
 #ortalama hanehalkı büyüklüğüne göre büyükten küçüğe sıralama
 belediye_nufus2<-belediye_nufus%>%mutate(belediye=fct_reorder(belediye, nufus_2019, .desc=TRUE))
 
-p21<-ggplot(belediye_nufus2, aes(x=belediye, y=nufus_2019))+
+p18<-ggplot(belediye_nufus2, aes(x=belediye, y=nufus_2019))+
   geom_bar(stat="identity")+
   theme(axis.text.x=element_text(angle=45, hjust=1))+
   xlab("Belediye Adı")+
   ylab("Ortalama Hanehalkı Büyüklüğü")+
   labs(title="Belediye Bazında 2019 Yılı Belediye Nüfusları Büyüklüğü")
-p21
+p18
 ```
 
-Similarly, we can visualize the dataset titled "2019 Yılı Belediye Nüfusları". We can see from the graph that 2 municipalities, Esenyurt and Küçükçekmece, are over 750.000. We can also see from the graph that the first one-third of the municipalities are over 500.000. From this, we can identify the most populous municipalities that would need the most help in an earthquake disaster.
+We can visualize the dataset titled "2019 Yılı Belediye Nüfusları". We can see from the graph that 2 municipalities, Esenyurt and Küçükçekmece, are over 750.000. We can also see from the graph that the first one-third of the municipalities are over 500.000. From this, we can identify the most populous municipalities that would need the most help in an earthquake disaster.
 
 **"gerceklesen_deprem" analysis:**
 
@@ -405,6 +443,8 @@ What stands out in both graphs is the increase in earthquake frequencies after J
 
 "İstanbul Çevresinde Gerçekleşen Depremlerin Harita Üzerinde Gösterimi":
 
+The created map allows us to observe whre earthquakes are concentrated.
+
 ```{r}
 #leaflet paketini yükleme
 #install.packages("leaflet")
@@ -428,26 +468,102 @@ istanbul_map
 
 ```
 
-"İstanbul Çevresinde Gerçekleşen Depremlere ait Veriler ile Tahmin":
+### District Based Overall Score Calculation, Sorting and Risk Analysis
+
+A dataframe named "analiz" was constructed in order to contain the data to be used for calculating the overall risk score on a district basis. The rows represent the districts and the columns represent the factors. Each factor has a weight in order to calculate the overall risk score and the weights are located in the "weight" vector.
 
 ```{r}
+#mahalle bazında veri içeren verisetlerinde ilçe bazında olacak şekilde düzeltmeler yapma
+deprem_senaryo2<-deprem_senaryo%>%group_by(ilce_adi)%>%summarise(across(starts_with("cok_agir_hasarli_bina_sayisi"):starts_with("gecici_barinma"), sum))
+bina_sayi2<-bina_sayi%>%group_by(ilce_adi)%>%summarise(across(starts_with("1980_oncesi"):starts_with("9-19 kat_arasi"), sum))
 
+#"analiz" adlı bir dataframe oluşturma
+analiz<-data.frame(ilce_adi=deprem_senaryo2$ilce_adi,
+                   cok_agir_hasarli_bina_sayisi=deprem_senaryo2$cok_agir_hasarli_bina_sayisi,
+                   agir_hasarli_bina_sayisi=deprem_senaryo2$agir_hasarli_bina_sayisi,
+                   orta_hasarli_bina_sayisi=deprem_senaryo2$orta_hasarli_bina_sayisi,
+                   hafif_hasarli_bina_sayisi=deprem_senaryo2$hafif_hasarli_bina_sayisi,
+                   can_kaybi_sayisi=deprem_senaryo2$can_kaybi_sayisi,
+                   agir_yarali_sayisi=deprem_senaryo2$agir_yarali_sayisi,
+                   hastanede_tedavi_sayisi=deprem_senaryo2$hastanede_tedavi_sayisi,
+                   hafif_yarali_sayisi=deprem_senaryo2$hafif_yarali_sayisi,
+                   dogalgaz_boru_hasari=deprem_senaryo2$dogalgaz_boru_hasari,
+                   icme_suyu_boru_hasari=deprem_senaryo2$icme_suyu_boru_hasari,
+                   atik_su_boru_hasari=deprem_senaryo2$atik_su_boru_hasari,
+                   gecici_barinma=deprem_senaryo2$gecici_barinma,
+                   `1980_oncesi`=bina_sayi2$`1980_oncesi`,
+                   `1980-2000_arasi`=bina_sayi2$`1980-2000_arasi`,
+                   `2000_sonrasi`=bina_sayi2$`2000_sonrasi`,
+                   `1-4 kat_arasi`=bina_sayi2$`1-4 kat_arasi`,
+                   `5-9 kat_arasi`=bina_sayi2$`5-9 kat_arasi`,
+                   `9-19 kat_arasi`=bina_sayi2$`9-19 kat_arasi`,
+                   ortalama_hanehalki_buyuklugu=ort_hane$ortalama_hanehalki_buyuklugu)
+
+#"weight" adlı bir vektör oluşturma
+weight<-c(0.09,0.07,0.05,0.03,0.09,0.07,0.05,0.03,0.05,0.05,0.05,0.05,0.08,0.05,0.03,0.03,0.05,0.08)
+
+#overall score hesaplama
+overall_risk_score<-analiz$cok_agir_hasarli_bina_sayisi*weight[1]+
+  analiz$agir_hasarli_bina_sayisi*weight[2]+
+  analiz$orta_hasarli_bina_sayisi*weight[3]+
+  analiz$hafif_hasarli_bina_sayisi*weight[4]+
+  analiz$can_kaybi_sayisi*weight[5]+
+  analiz$agir_yarali_sayisi*weight[6]+
+  analiz$hastanede_tedavi_sayisi*weight[7]+
+  analiz$hafif_yarali_sayisi*weight[8]+
+  analiz$dogalgaz_boru_hasari*weight[9]+
+  analiz$icme_suyu_boru_hasari*weight[10]+
+  analiz$atik_su_boru_hasari*weight[11]+
+  analiz$gecici_barinma*weight[12]+
+  analiz$X1980_oncesi*analiz$ortalama_hanehalki_buyuklugu*weight[13]+
+  analiz$X1980.2000_arasi*analiz$ortalama_hanehalki_buyuklugu*weight[14]+
+  analiz$X2000_sonrasi*analiz$ortalama_hanehalki_buyuklugu*weight[15]+
+  analiz$X1.4.kat_arasi*analiz$ortalama_hanehalki_buyuklugu*weight[16]+
+  analiz$X5.9.kat_arasi*analiz$ortalama_hanehalki_buyuklugu*weight[17]+
+  analiz$X9.19.kat_arasi*analiz$ortalama_hanehalki_buyuklugu*weight[18]
+overall_risk_score<-data.frame(ilce_adi=analiz$ilce_adi, overall_risk_score=overall_risk_score)
 ```
 
-## 3.2 Trend Analysis
+After the overall score calculation was completed, ranking was performed and the districts were ranked from highest risk to lowest risk. Finally, the overall scores were shown on the map.
 
-xxxxxx
+```{r}
+overall_risk_score<-overall_risk_score[order(overall_risk_score$overall_risk_score, decreasing=TRUE), ]
 
-## 3.3 Model Fitting
+koordinatlar<-data.frame(ilce_adi=deprem_senaryo2$ilce_adi,
+                         latitude=c(40.8747,41.1864,40.9833,40.9792,41.0341,40.9977,40.9804,41.0837,41.0349,41.0441,41.1271,41.0133,41.0371,41.0248,41.1421,41.0323,41.0542,41.0412,41.0551,41.0203,41.0576,41.0105,40.9903,41.0717,40.8999,41.0092,40.9339,40.8796,41.0090,41.1664,41.1749,41.0737,41.0604,40.9684,41.1070,40.8144,41.0338,41.0327,40.9910),
+                         longitude=c(29.1294,28.7389,29.1278,28.7214,28.8330,28.8506,28.8724,28.8169,28.9122,29.0017,29.0978,28.6489,28.9774,28.5854,28.4575,29.1695,28.8676,28.6939,28.9346,28.9339,28.9153,28.8741,29.0205,28.9646,29.1936,28.7757,29.1650,29.2580,29.2109,29.0500,29.6096,28.2479,28.9878,29.2620,28.8714,29.3094,29.1013,29.0319,28.8968))
 
-xxxxxx
+#en riskli ilçeyi belirleme
+highest_overall_risk_score<-overall_risk_score[which.max(overall_risk_score$overall_risk_score), "ilce_adi"]
 
-## 3.4 Results
+risk_map<-leaflet(overall_risk_score)%>%addTiles()%>%addCircleMarkers(lng=~koordinatlar$longitude, lat=~koordinatlar$latitude, label=~paste0(koordinatlar$ilce_adi, "<br>", "Overall Skor: ", overall_risk_score), color=ifelse(koordinatlar$ilce_adi==highest_overall_risk_score, "red", "blue"))
+risk_map
+```
 
-xxxxxx
+## 3.2 Results
+
+As a result of these analyses, districts where precautions need to be taken, where the most loss of life and property could occur, and where potential interventions need to be well planned have been identified. These are Fatih, Bağcılar, Pendik, Küçükçekmece and Esenyurt.
 
 # 4. Results and Key Takeaways 📈
 
--   3-5
+Istanbul is Europe's most populous city. It means that the potential of destruction and the need for help would be very high if a disaster such as an earthquake occurs.
+
+The purpose of this project is to examine the risky structural condition, to make district-based interpretations and to evaluate the opinions of people living in Istanbul.
+
+7 datasets were used in this study, plots were drawn and interpreted comprehensively.
+
+-   This study has determined which districts are most likely to experience possible building and infrastructure damage in an earthquake disaster. This helps determine where, how and how much aid should be directed.
+-   By calculating the overall risk scores, the districts of Istanbul have been ranked from the most risky to least risky. Thanks to his ranking, the government will be able to take appropriate steps both before and after an earthquake, aiding in preparedness and response efforts.
+-   Lastly, this study serves as both a guide and an encouragement for the society to be prepared for this disaster.
+
+This study has
+
+-   identified the regions most prone to earthquakes and the cities most at risk,
+
+-   depicted them on maps,
+
+-   drawn conclusions about the opinions of survey participants and
+
+-   examined building and infrastructure in Istanbul.
 
 \*ChatGPT was utilized.
