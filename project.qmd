@@ -542,6 +542,7 @@ After the overall score calculation was completed, ranking was performed and the
 
 ```{r}
 overall_risk_score<-overall_risk_score[order(overall_risk_score$overall_risk_score, decreasing=TRUE), ]
+overall_risk_score
 
 koordinatlar<-data.frame(ilce_adi=deprem_senaryo2$ilce_adi,
                          latitude=c(40.8747,41.1864,40.9833,40.9792,41.0341,40.9977,40.9804,41.0837,41.0349,41.0441,41.1271,41.0133,41.0371,41.0248,41.1421,41.0323,41.0542,41.0412,41.0551,41.0203,41.0576,41.0105,40.9903,41.0717,40.8999,41.0092,40.9339,40.8796,41.0090,41.1664,41.1749,41.0737,41.0604,40.9684,41.1070,40.8144,41.0338,41.0327,40.9910),
