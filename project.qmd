@@ -1,12 +1,12 @@
 ---
 title: "Project"
-output: 
-  html_document: 
+format: 
+  html: 
     code-fold: true
     code-summary: "Show the code"
     code-copy: true
     embed-resources: true
-  pdf_document:
+  pdf:
     colorlinks: true
     papersize: a4
     fontsize: 11pt
@@ -14,10 +14,6 @@ output:
     margin-right: 2cm
     margin-top: 2cm
     margin-bottom: 2cm
-  word_document:
-    fig_caption: yes
-    toc: yes
-    toc_depth: 2
 ---
 
 Welcome to my project page.
