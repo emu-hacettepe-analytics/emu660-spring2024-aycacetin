@@ -1,5 +1,6 @@
 ---
 title: "Project"
+prefer-html: true
 format: 
   html: 
     code-fold: true
