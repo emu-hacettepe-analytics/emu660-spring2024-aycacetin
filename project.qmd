@@ -1,19 +1,15 @@
 ---
 title: "Project"
-format: 
-  html: 
+output: 
+  html_document: 
     code-fold: true
     code-summary: "Show the code"
     code-copy: true
     embed-resources: true
-  pdf:
-    colorlinks: true
-    papersize: a4
-    fontsize: 11pt
-    margin-left: 2cm
-    margin-right: 2cm
-    margin-top: 2cm
-    margin-bottom: 2cm
+  word_document:
+    fig_caption: yes
+    toc: yes
+    toc_depth: 2
 ---
 
 Welcome to my project page.
@@ -535,29 +531,29 @@ overall_risk_score<-analiz$cok_agir_hasarli_bina_sayisi*weight[1]+
   analiz$X1.4.kat_arasi*analiz$ortalama_hanehalki_buyuklugu*weight[16]+
   analiz$X5.9.kat_arasi*analiz$ortalama_hanehalki_buyuklugu*weight[17]+
   analiz$X9.19.kat_arasi*analiz$ortalama_hanehalki_buyuklugu*weight[18]
-overall_risk_score<-data.frame(ilce_adi=analiz$ilce_adi, overall_risk_score=overall_risk_score)
+
+latitude=c(40.8747,41.1864,40.9833,40.9792,41.0341,40.9977,40.9804,41.0837,41.0349,41.0441,41.1271,41.0133,41.0371,41.0248,41.1421,41.0323,41.0542,41.0412,41.0551,41.0203,41.0576,41.0105,40.9903,41.0717,40.8999,41.0092,40.9339,40.8796,41.0090,41.1664,41.1749,41.0737,41.0604,40.9684,41.1070,40.8144,41.0338,41.0327,40.9910)
+longitude=c(29.1294,28.7389,29.1278,28.7214,28.8330,28.8506,28.8724,28.8169,28.9122,29.0017,29.0978,28.6489,28.9774,28.5854,28.4575,29.1695,28.8676,28.6939,28.9346,28.9339,28.9153,28.8741,29.0205,28.9646,29.1936,28.7757,29.1650,29.2580,29.2109,29.0500,29.6096,28.2479,28.9878,29.2620,28.8714,29.3094,29.1013,29.0319,28.8968)
+
+overall_risk_score_df<-data.frame(ilce_adi=analiz$ilce_adi, latitude=latitude, longitude=longitude, overall_risk_score=overall_risk_score)
 ```
 
 After the overall score calculation was completed, ranking was performed and the districts were ranked from highest risk to lowest risk. Finally, the overall scores were shown on the map.
 
 ```{r}
-overall_risk_score<-overall_risk_score[order(overall_risk_score$overall_risk_score, decreasing=TRUE), ]
-overall_risk_score
-
-koordinatlar<-data.frame(ilce_adi=deprem_senaryo2$ilce_adi,
-                         latitude=c(40.8747,41.1864,40.9833,40.9792,41.0341,40.9977,40.9804,41.0837,41.0349,41.0441,41.1271,41.0133,41.0371,41.0248,41.1421,41.0323,41.0542,41.0412,41.0551,41.0203,41.0576,41.0105,40.9903,41.0717,40.8999,41.0092,40.9339,40.8796,41.0090,41.1664,41.1749,41.0737,41.0604,40.9684,41.1070,40.8144,41.0338,41.0327,40.9910),
-                         longitude=c(29.1294,28.7389,29.1278,28.7214,28.8330,28.8506,28.8724,28.8169,28.9122,29.0017,29.0978,28.6489,28.9774,28.5854,28.4575,29.1695,28.8676,28.6939,28.9346,28.9339,28.9153,28.8741,29.0205,28.9646,29.1936,28.7757,29.1650,29.2580,29.2109,29.0500,29.6096,28.2479,28.9878,29.2620,28.8714,29.3094,29.1013,29.0319,28.8968))
+overall_risk_score_df<-overall_risk_score_df[order(overall_risk_score_df$overall_risk_score, decreasing=TRUE), ]
+overall_risk_score_df
 
 #en riskli ilçeyi belirleme
-highest_overall_risk_score<-overall_risk_score[which.max(overall_risk_score$overall_risk_score), "ilce_adi"]
+highest_overall_risk_score<-overall_risk_score_df[which.max(overall_risk_score_df$overall_risk_score), "ilce_adi"]
 
-risk_map<-leaflet(overall_risk_score)%>%addTiles()%>%addCircleMarkers(lng=~koordinatlar$longitude, lat=~koordinatlar$latitude, label=~paste0(koordinatlar$ilce_adi, "<br>", "Overall Skor: ", overall_risk_score), color=ifelse(koordinatlar$ilce_adi==highest_overall_risk_score, "red", "blue"))
+risk_map<-leaflet(overall_risk_score_df)%>%addTiles()%>%addCircleMarkers(lng=~overall_risk_score_df$longitude, lat=~overall_risk_score_df$latitude, label=~paste0(overall_risk_score_df$ilce_adi, "<br>", "Overall Skor: ", overall_risk_score_df$overall_risk_score), color=ifelse(overall_risk_score_df$ilce_adi==highest_overall_risk_score, "red", "blue"), radius=5, stroke=FALSE, fillOpacity=0.8)%>%addLegend(position="bottomright", colors=c("red", "blue"), labels=c("En Riskli İlçe", "Diğer İlçeler"), title="Risk Seviyeleri")
 risk_map
 ```
 
 ## 3.2 Results
 
-As a result of these analyses, districts where precautions need to be taken, where the most loss of life and property could occur, and where potential interventions need to be well planned have been identified. These are Fatih, Bağcılar, Pendik, Küçükçekmece and Esenyurt.
+As a result of these analyses, districts where precautions need to be taken, where the most loss of life and property could occur, and where potential interventions need to be well planned have been identified. These are Fatih, Bağcılar, Pendik, Küçükçekmece and Esenyurt. If the weights used in calculating the overall risk score are determined by experts, much more reliable and accurate results will be obtained.
 
 # 4. Results and Key Takeaways 📈
 
@@ -581,4 +577,4 @@ This study has
 
 -   examined building and infrastructure in Istanbul.
 
-\*ChatGPT was utilized.
+\*ChatGPT was utilized in this project.

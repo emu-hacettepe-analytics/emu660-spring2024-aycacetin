@@ -1,5 +1,19 @@
 ---
 title: "My Assignments"
+format: 
+  html: 
+    code-fold: true
+    code-summary: "Show the code"
+    code-copy: true
+    embed-resources: true
+  pdf:
+    colorlinks: true
+    papersize: a4
+    fontsize: 11pt
+    margin-left: 2cm
+    margin-right: 2cm
+    margin-top: 2cm
+    margin-bottom: 2cm
 ---
 
 On this page, I showcase the assignment I conducted for the Spring 2024 EMU660 Decision Making with Analytics course.
