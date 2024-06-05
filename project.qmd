@@ -6,6 +6,14 @@ output:
     code-summary: "Show the code"
     code-copy: true
     embed-resources: true
+  pdf_document:
+    colorlinks: true
+    papersize: a4
+    fontsize: 11pt
+    margin-left: 2cm
+    margin-right: 2cm
+    margin-top: 2cm
+    margin-bottom: 2cm
   word_document:
     fig_caption: yes
     toc: yes
